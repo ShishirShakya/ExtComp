@@ -1,0 +1,172 @@
+---
+title: Inter and Intra-Regional Spillovers of Global External-Competitiveness
+author:
+  - name: Shishir Shakya
+    email: shishir.shakya@mail.wvu.edu
+    affiliation: West Virginia University
+    footnote: Corresponding Author
+  - name: Alexandre R. Scarcioffolo
+    email: alexandre.ribeiroscarcioffolo@mail.wvu.edu
+    affiliation: West Virginia University
+address:
+  - code: West Virginia University
+    address: College of Business and Economics & Regional Research Institute (RRI), West Virginia University
+  - code: Another University
+    address: Davis College of Agriculture, Natural Resources and Design & Regional Research Institute (RRI), West Virginia University
+abstract: |
+  The 2007 U.S. sub-prime mortgage crisis spillover globally in 2008, sharply affecting the entire world, especially European countries. Ever since, measuring and mapping how the shocks are transmitted and received in such global network has become a vital research domain. Several papers by Diebold and Yilmaz (2009, 2014, 2015) laid foundations to analyze the financial interrelatedness based on the stock prices. However, in this paper, we investigated the dynamics of connectedness of external-competitiveness by mapping how countries are economically connected to transmit and receive external-competitiveness and by ranking the economies based on their ability to transmit or receive external-competitiveness. In our study, the external-competitiveness refers to the nation’s capability to trade at the competitive prices in the international market. As the proxy for external competitiveness, we retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange rate (EER ) from the Bank of International Settlements (BIS) for 25 major economies which includes Group of Ten (G10) , along with, Australia, Austria, Denmark, Finland, Greece, Ireland, New Zealand, Norway, Portugal and Spain and the four "Asian Newly Industrialized Economies" (NIE’s).
+
+bibliography: mybibfile.bib
+output: rticles::elsevier_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE, warning = FALSE, message = FALSE, tidy = TRUE, comment=FALSE)
+```
+
+Introduction
+==========================
+The intricately interconnectedness of global economies due to deregulation, liberalization, and spatial specialization in production followed by succession of revolutionary advances in information and communications technologies, in one hand have promoted economic prosperity while in other, have made markets vulnerable to shocks regardless of the origin of the shocks \citep{Park2017} [@Park2017]. Foreseeing how events in one country or region might spillover to other countries is primordial to Governments, private companies, and private investors. By doing so, Government's leaders can anticipate disruptive global shocks by incentive their own economy as well as by protecting vital sectors that might be essential to the nation, guaranteeing the welfare while improving the economic performance during a distress moment. Moreover, global private companies can efficiently change corporate investment in regions/sectors that might be  heavily affected to investments that do not bring that level of uncertainty. Finally, through the lens of private investors, having better information regarding the global market conditions might improve the allocation of their portfolios, maximizing gains through arbitrage. Therefore,  measuring and mapping how economic shocks are transmitted and received in such global network has become a vital research domain in which this study focus on understudying the dynamics of countries' competitiveness with respect to global economic shocks.
+
+Periods of distress economies such as the European Monetary System (EMS) crisis 1992-1993,  the Mexican crisis (Tequila crisis) in the end of 1994; the Thailand crisis (Asian flu) in 1997; Russian crisis (Russian virus) in 1998 and the Argentinean crisis in 2001 have persistently proven the financial and economic turbulence as the ramifications of interconnected world [@Kali2010]. Further, the 2007 U.S. sub-prime mortgage crisis followed by Lehman Brothers collapse spillover globally in 2008 sharply affecting the world and triggering the European debt crisis in 2009. Voluminous researches have concentrated on the connectedness of financial markets and its interactions while [see @Diebold2009, @Diebold2012, @Diebold2013, @Diebold2014, @Barunik2015, @Diebold2015] are pioneers.
+
+Although, due to high linked and globalized world in which shocks move regardless of geographic boundaries, identifying the transmiter and receiver of shocks can be applied to broader contexts. For an example: @Diebold2013 examine business cycle connectedness of U.S.A, Japan, France, Germany, U.K. and Italy; @Awartani2016  investigate the directional risk transfer from oil to US equities, Euro/Dollar exchange rates, precious metals and agricultural commodities and @Barunik2015 used rich time-frequency dynamics of volatility connectedness in US financial institutions; @Billio2012 measure the connectedness of returns of hedge funds, banks, broker/dealers, and insurance companies based on principal components analysis and Granger causality networks; @Bubak2011 study the dynamics of volatility transmission between Central European (CE) currencies and the EUR/USD foreign exchange; @Cimini2015 80 largest eurozone financial and non-financial entities in terms of market capitalisation. **I will cite trade networks, sectorial networks and financial too and we will seggregate..**
+
+One area of interest that is underrate and quite controversial is to measure the dynamics of international competitiveness. In general, the concept of "competitiveness" can conclave the multidimensional facets of market performances that relates to product quality, ability to innovate, rapidly adjust to customer needs, and absence of the restrictive practice in labor market [@Turner1993]. Nonetheless, its interpretation can be easily misleading since there is no unique definition of the term “competitiveness”. According to @Krugman1994, the word "competitiveness" has two different meaning depends on its application. Corporation competitiveness, it is a zero-sum game, of which if a firm A is losing its competitiveness (market share), other firms will incorporate it until the firm A goes bankrupt. On the other hand, when we refer to competitiveness in a international perspective, we cannot use the same definition above since countries do not go out of business. Hence, international competitiveness being one area of interest is controversial and thus measurement of the dynamics of international competitiveness can suffer the definitional sensitivities. But within these definitional hurdles of international competitiveness, in one hand, its clear that relative cost or prices if are too high can deter to compete internationally. Meanwhile, this clarity on the concept of competitiveness tend to be very “Zen” like because, in other hand, strong economic performances appreciates the exchange rate thus leads to higher relative cost.
+
+@Turner1993 clarify that if enterprises in a country become more successful in the non-price dimensions of performance — if they are innovative, flexible, produce high-quality goods and so on — then the real exchange rate would be expected to strengthen. Price and wage competitiveness — the narrow concept — would thus appear to "worsen". But such "deterioration" would of course be a symptom of success, not of failure. For the narrow concept, the effective exchange rates can be a proxy for the short run price competitiveness.
+
+Even though our paper is mainly centers around the narrower concept of competitiveness. But translating this perception into operation measures has always faced formidable difficulties. Many attempts have been seen to quantify the price or cost competitiveness using the Real Effective Exchange rates. Fed, EU, JP, BIS..the trend appears about the same. However, we take a special precaution to interpret the Effective exchange rate. 
+
+The concept of effective exchange rate was formalized after the breakdown of the multilateral Bretton Woods system of pegged but adjustable exchange rates in the early 1970s. TSince, currencies have entered a new era of non-orderly floating exchange rates, leaving it at countries’ discretion to choose their particular exchange rate regime. Members of today’s European Union established a new regional system of pegged but adjustable exchange rates, and at the end of the 1990s, some of them permanently fixed their exchange rates and adopted the euro as their common currency. Among developing countries, too, many have chosen to peg their currencies to or stabilize them against some anchor currencies, most prominently the United States dollar, at least during some of the time [@UNCTAD2012].
+
+EER is the trade-weighted average exchange rate of a currency against a basket of currencies and the EER adjusted for inflation gives real EER (REER). In both policy and market analysis, EERs serve various purposes: as a measure of international competitiveness, as components of monetary/financial conditions indices, as a gauge of the transmission of external shocks, as an intermediate target for monetary policy or as an operational target [@Klau2006].
+
+However, the controversy persists even in this narrow concept mainly because of distinct statistical from of cost and prices indices and their relativity. If we discuss about relativity (to whom or which country to compare with and by how much and at which time or base year) it again varies upon the choices of currency basket, their weights and base year, while, we discuss about the price or cost measure for the industrial countries, the competitiveness depends upon the unit of labor costs (mostly in manufacturing ), consumer price or other broadly-based price index and the export unit values. A comprehensive survey of all the issues related to measuring effective exchange rate in given in [@Koch1984].
+
+To create choices of currencies basket the currency should be at least convertibility or exchangeable at multiple exchange rate and the nature of inflation of the countries should have moderate inflation. Because, incorporating high inflation currencies in the index calculation would mean that nominal indexes over time become dominated by the rapidly declining external value of inflation-prone currencies.
+
+While the currencies weights are derived with various weighting schemes like: general equilibrium model-based weights like the Multilateral Exchange Rate Model (MERM) of the IMF and trade-weighting schemes based on the bilateral trade flows, global trade flows and double weights. The bilateral or global trade flows are essentially special cases of the double-weighting scheme. In a bilateral scheme it is implicitly assumed that in each export market the domestic producer constitutes the sole competitor, completely ruling out competition from other exporters to that market (i.e. competition in "third markets"). Only in each country's home market is competition between various foreign suppliers allowed for. This weighting scheme thus assigns weights to trading partners strictly in proportion to their share in the home country's exports and imports. Finally, under a global scheme it is assumed that all individual country markets collapse into a single world market in which only exporters compete. Under this assumption the currencies of partner countries are weighted in proportion to their share in world trade. 
+
+While few other papers test the co-movement of real effective exchange rate [@Nagayasu2017], these studies are rather limited as they do not report the direction of the shocks between countries, and also do not specify the relative magnitudes of their contributions. Thus, this gives us that there is a potential ground of improvement by , analyzing to the dynamics of analyze the inter and intra-regional analysis of competitiveness. Therefore, the purposes of the present paper are to investigate the dynamics of connectedness of external-competitiveness by mapping how countries are economically connected to transmit and receive price-competitiveness and by ranking the economies based on their ability to transmit or receive price-competitiveness. As the proxy for price-competitiveness, \textcolor{red}{Shishir will change this after defining the sample}we retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange rate (EER) from the Bank of International Settlements (BIS) for 25 major economies which includes Group of Ten (G10) , along with, Australia, Austria, Denmark, Finland, Greece, Ireland, New Zealand, Norway, Portugal and Spain and the four "Asian Newly Industrialized Economies" (NIE’s)  . Also, to assess the time-varying global competitiveness, we also perform the analysis in fixed period rolling window methodology.
+
+
+Instead of using the data of the asset prices or exchange rates **( \textcolor{red}{Needs citations}which many other researchers use)** we use the data of effective exchange rate. **\textcolor{red}{Needs citations}**The Dornbusch model or overshooting theory provides a theoretical foundation that the financial market and exchange rate markets over-react promptly on unanticipated policy/shock, while, goods markets equilibrate gradually and over the time, exuberating financial and exchange rate markets dissipates.
+
+For an example, on December 17 of 2014, President of United States of America, announced to normalize the relation to Cuba **\textcolor{red}{Needs citations}**, and within two days, the Herzfeld Caribbean Basin Fund Inc.- A closed end fund management company- which has "CUBA" as the ticker symbol and has no exciting company announcement, suddenly sells for a 70 percent higher premium then gradually it reverts to its average past values **\textcolor{red}{Needs citations}**. Hence, the study of financial and exchange rate market potentially feedbacks false alarms. The following graph shows such false alarm.
+
+```{r, echo=FALSE, quietly=TRUE}
+library(tseries)
+par(mfrow =c(1,2))
+plot(tseries::get.hist.quote(quiet = TRUE, instrument = "CUBA", start = "2014-01-01", end = "2015-03-31", quote = "AdjClose", 
+                              provider = "yahoo", compression = "d", retclass = "zoo"), xlab = '', ylab='', main = '', lwd = 3, col = 'blue')
+abline(v = as.Date('2014-12-17', formate='%Y-%m-%d'), lty = 2, col='red', lwd = 2)
+abline(v = seq(as.Date("2014/01/01"), as.Date("2015/03/31"), "month"), lty = 9)
+
+plot(tseries::get.hist.quote(quiet = TRUE, instrument = "USDCHF=X", start = "2014-07-01", end = "2015-07-31", quote = "AdjClose", 
+                             provider = "yahoo", compression = "d", retclass = "zoo"), xlab = '', ylab='', main = '', lwd = 3, col = 'blue')
+
+abline(v = as.Date('2015-01-15', formate='%Y-%m-%d'), lty = 2, col='red', lwd = 2)
+abline(v = seq(as.Date("2014-07-01"), as.Date("2015-07-31"), "month"), lty = 9)
+```
+
+
+Literature reviews
+==========================
+
+Data and methodologies
+==========================
+
+## Data
+
+BIS defines two NEER indexes: Broad and narrow. The broad NEER consists of 61 advanced and developing economies, whereas the narrow NEER considers only 25 advanced economies. Although the broad basket is more representative than the narrow, neither should be regarded as the “better” measurement. The narrow indices may better gauge the competitiveness among advanced countries because their products have similar elasticities of substitution. The broad indices, on the other hand, give a more global picture by taking the emerging market economies into account. As a result, they would be more useful in analyses of issues such as the sustainability of the external trade balances.
+
+The narrow NEER consist only advanced economies while the broad NEER consist developing. Although the broad basket is more representative than the narrow one, neither should be regarded as the ``better" measure, and which one to study depends on the context. The narrow indices may better gauge the competitiveness among advanced countries because their products have similar elasticities of substitution. The broad indices, on the other hand, give a more global picture by taking the emerging market economies into account. As a result, they would be more useful in analyses of issues such as the sustainability of the external trade balances.
+
+For this study, we retrieved the broad  daily data of NEER from (11--04--1996 to- 08--08--2017) broad  indices of NEER indices (NEER henceforth) from the Bank of International Settlement (BIS) website. This dataset includes 61 economies, however, for our study we only considered the 25 major importer and exporter economies according to World Bank (2014). Major 25 economies (based on their merchandise imports and export reported by World Bank for year 2014). The list of countries and their respective region classification is given in Table-1. We took calculated the weekly average NEER weekly average from the of daily data NEER,  then converting theed weekly NEER to average weekly real effective exchange rate (REER) using the month specific deflator.  The monthly deflator was derived from the monthly REER and NEER. Monthly REER and NEER were also retrieved from the BIS website. 
+
+For the analysis, we developed two sets of data. First, We consider the are the growth rates of the weekly REER of each economy and  and second is the  weekly volatility based on the daily REER under the assumption of the volatility is fixed within the week ly period but variable across weeks following [@Garman1980, Alizadeh2002] methodology. We considered the REER of Monday and Friday as weekly opening and closing value, and weekly minimum and maximum as the low and close value. The weekly estimated volatility is calculate as following: 
+
+Then they use the implied volatility and assume that the implied volatility is fixed within periods (in this case, weeks) but variable across periods. Then, following @Garman1980 and @Alizadeh2002, we can use weekly high, low, opening and closing prices obtained from underlying daily high/low/open/close data to estimate weekly stock return volatility:
+
+\[{{\hat{\sigma }}^{2}}=0.511{{\left( {{H}_{t}}-{{L}_{t}} \right)}^{2}}-0.019\left[ \left( {{C}_{t}}-{{O}_{t}} \right)\left( {{H}_{t}}+{{L}_{t}}-2{{O}_{t}} \right)-2\left( {{H}_{t}}-{{O}_{t}} \right)\left( {{L}_{t}}-{{O}_{t}} \right) \right]-0.383{{\left( {{C}_{t}}-{{O}_{t}} \right)}^{2}}\]
+
+where, $H$  is the Monday-Friday high, $L$  is the Monday-Friday low, $O$  is the Monday open and $C$  is the Friday close (all in natural logarithms).
+
+## Diebold and Yilmaz methodology
+Vector autoregression (VAR) model is a stochastic process to capture the linear interdependencies among multiple stationary time series by incorporating own lagged values, the lagged values of the other model variables, and an error term. VAR modeling does not require as much knowledge about the forces influencing a variable as do structural models with simultaneous equations: The only prior knowledge required is a list of variables which can be hypothesized to affect each other intertemporally. Following Sims (1980), given $N$ stationary variables, a $p$ lagged vector autoregression $VAR\left( p \right)$ system can be defined as:
+
+\[{{x}_{t}}=\sum\nolimits_{i=1}^{p}{{{\Phi }_{i}}{{x}_{t-i}}+{{\varepsilon }_{t}}}\]
+
+The basic component of Diebold and Yilmaz (D&Y) model is the generalized variance decomposition of forecast errors of an $N-$ variables (economies), $p$ lagged covariance stationary vector auto-regression $VAR\left( p \right)$approximating model. Such $VAR\left( p \right)$ system is defined as: 
+
+\[{{x}_{t}}=\sum\nolimits_{i=1}^{p}{{{\Phi }_{i}}{{x}_{t-i}}+{{\varepsilon }_{t}}}\]
+
+where ${{\varepsilon }_{t}}$ is the vectors independently and identically distributed disturbances and $\Omega$ is the covariance matrix. 
+For a covariance stationary $VAR\left( p \right)$ process there exist the moving averages representation as ${{x}_{t}}=\sum\nolimits_{i=0}^{\infty }{{{A}_{i}}{{\varepsilon }_{t-i}}}$, where the $N\times N$ coefficient matrix ${{A}_{i}}$ obey the recursion ${{A}_{i}}={{\Phi }_{1}}{{A}_{i-1}}+{{\Phi }_{2}}{{A}_{i-2}}+\cdots +{{\Phi }_{p}}{{A}_{i-p}}$ with ${{A}_{0}}$ an $N\times N$ identity matrix and ${{A}_{i}}=0$ for $i<0$.The moving averages coefficients (or transformations such as impulse response functions or variance decomposition) provides the dynamics of the system. 
+
+where, ${{\varepsilon }_{t}}$ is the vectors independently and identically distributed disturbances and $\Omega$ is the covariance matrix. For a covariance stationary $VAR\left( p \right)$ process there exist the moving averages representation as ${{x}_{t}}=\sum\nolimits_{i=0}^{\infty }{{{A}_{i}}{{\varepsilon }_{t-i}}}$, where the $N\times N$ coefficient matrix ${{A}_{i}}$ obey the recursion ${{A}_{i}}={{\Phi }_{1}}{{A}_{i-1}}+{{\Phi }_{2}}{{A}_{i-2}}+\cdots +{{\Phi }_{p}}{{A}_{i-p}}$ with ${{A}_{0}}$ being an $N\times N$ identity matrix and ${{A}_{i}}=0$ for $i<0$. The moving averages coefficients (or transformations such as impulse response functions  or variance decomposition) provides the dynamics of the system.
+
+
+The variance decompositions allow to split the H-step ahead forecast error of each variable into parts that can be attributable to the various market shocks. The aggregation of these decompositions will be subsequently used to compute the directional connectedness from an economy to any or to all the included economy.
+
+The variance decompositions computation is usually done by using orthogonal  VAR shocks. The Cholesky identification scheme achieves orthogonality but the computed variance decompositions are then unstable  and they are dependent on the ordering of the marketsmodel. Thus, Cholesky decomposition is not suitable. A framework that produces order-invariant decompositions is the generalized variance decompositions, of which it VAR that allows for correlated shocks but accounts for them appropriately. The framework, which we denote KPPS, has been first proposed by Koop et al. (1996) and Pesaran and Shin (1998). The KPPS forecast error variance decomposition matrix (VDM) for H step ahead is computed as:
+
+\[\theta _{ij}^{g}\left( H \right)=\frac{\sigma _{jj}^{-1}\sum\nolimits_{h=0}^{H-1}{{{\left( {{{{e}'}}_{i}}{{h}_{h}}\Omega {{e}_{j}} \right)}^{2}}}}{\sum\nolimits_{h=0}^{H-1}{\left( {{{{e}'}}_{i}}{{h}_{h}}\Omega {{e}_{j}} \right)}}\]
+
+Where, ${{\sigma }_{jj}}$ is the standard deviation of the error term of the ${{j}^{th}}$ economy and ${{e}_{i}}$ is a selection vector with one on the ${{i}^{th}}$ element and zero otherwise.
+
+To provide the information about the relative importance of each random innovation to the variables in the VAR (information relative to the size of endogenous and exogenous shocks on a given market), we can normalize each entry with its respective row as:
+
+\[\tilde{\theta }_{ij}^{g}\left( H \right)=\frac{\theta _{ij}^{g}\left( H \right)}{\sum\nolimits_{j=1}^{N}{\theta _{ij}^{g}\left( H \right)}}\]
+
+Which implies the row sum for any ${{i}^{th}}$ economy to be $\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}=1$, hence row sums across all the economy be $\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}=N$.
+Now each element of the row wise standardized VDM i.e ${\tilde \theta _{ij}^g\left( H \right)}$ can be interpreted as the pairwise directional connectedness from economy $j$ to economy $i$ at horizon $H$. For the intuitive purpose, ${{C}_{i\leftarrow j}}\left( H \right)$ represents the pairwise connectedness from economy $j$ to economy $i$ at horizon $H$ and the opposite direction pairwise connectedness from economy as ${{C}_{j\leftarrow i}}\left( H \right)$. The net pairwise directional connectedness then can be defined as
+
+\[{{C}_{ij}}={{C}_{i\leftarrow j}}\left( H \right)-{{C}_{j\leftarrow i}}\left( H \right)\]
+
+The net pairwise directional connectedness identifies the dominant economy who transmit the information. Note that ${{C}_{ij}}=-{{C}_{ji}}$ and if ${{C}_{ij}}>0$ then, economy $j$transmit the information to economy $i$.
+
+To find how all the economy are jointly contributing to a single economy, then the partial aggregation of connectedness from all economy to economy $i$ except from itself can be denoted as the row sum	
+
+\[{{C}_{i\leftarrow \bullet }}\left( H \right)=\frac{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}{N}\] 
+
+Similarly, to compute how a market $i$ is contributing to the shocks of all other economy (except by itself) by aggregating partially as
+
+\[{{C}_{\bullet \leftarrow i}}\left( H \right)=\frac{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{i=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}{N}\]
+
+Then the net directional connectedness can be measured as:
+
+\[{{C}_{i}}\left( H \right)={{C}_{i\leftarrow \bullet }}\left( H \right)-{{C}_{\bullet \leftarrow i}}\left( H \right)\] 
+
+The total aggregation of the variance decompositions across all markets measures the system-wide connectedness. The total connectedness in all markets can be computed as:
+
+\[C\left( H \right)=\frac{\sum\nolimits_{i=1,i\ne j}^{N}{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{i=1,i\ne j}^{N}{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}}{N}\]
+	
+
+	
+Results and discussions
+==========================
+
+##Determinants of the Spillovers
+##Robustness
+##Descriptive Statistics
+##Trend Diagram
+##unconditional or Full Sample Analysis with lag of p and horizon of H using both VAR and VECM
+##Pareto Distribution of from and to effects
+##Rolling Sample Analysis
+##Sensitivity of Index for Lags, Horizon for VAR and VECM
+##Sensitivity of Index for Lags, Horizon and Cointegrating  ranks for both VAR and VECM model
+
+##US, Germany, Japan, France, UK, Italy
+##Network Analysis for centrality and Network Plots
+
+
+Conclusions
+==========================
+
+
+
+
+References {#references .unnumbered}
+==========
