@@ -1,0 +1,202 @@
+```{r, echo=FALSE}
+# Clean the global enviroment
+# rm(list = ls())
+# dev.off(dev.list()['RStudioGD'])
+
+# Install and load the packages
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, 'Package'])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE, repos = 'http://cran.us.r-project.org')
+  sapply(pkg, require, character.only = TRUE)
+}
+
+# ipak(c('rstudioapi'))
+# 
+# path <- dirname(rstudioapi::getActiveDocumentContext()$path)
+# setwd(path)
+path <- getwd()
+packages <- c('readr', 'readxl', 'xts', 'tidyr', 'dplyr')
+invisible(ipak(packages))
+
+dir.create(file.path(path, 'rawdata'))
+dir.create(file.path(path, 'outcomes'))
+dir.create(file.path(path, 'outcomes/graphs'))
+
+## Download the daily narrow and broad Nominal Indices
+myurl <- "https://www.bis.org/statistics/full_webstats_eer_d_dataflow_csv.zip"
+if (file.exists('rawdata/bis_data.zip') == FALSE) { # get the zip file
+  download.file(myurl, destfile = "rawdata/bis_data.zip", mode="wb")
+}
+mydata <- t(readr::read_csv(unzip("rawdata/bis_data.zip", exdir = paste0(path,'/rawdata'))))
+colnames(mydata) <- mydata[ 8, ]
+mydata <- mydata[-c(1:4, 6:9), ]
+
+
+narrow <- na.omit(mydata[ -1, c(62:ncol(mydata))])
+broad <- na.omit(mydata[  -1, -c(62:ncol(mydata))])
+
+invisible(ipak(c('readxl', 'xts')))
+```
+
+```{r, echo =FALSE}
+narrow_n_d <- xts(narrow, order.by=as.Date(rownames(narrow),"%Y-%m-%d")) #Narrow_Nominal_Daily
+broad_n_d <- xts(broad, order.by=as.Date(rownames(broad),"%Y-%m-%d")) #Broad_Nominal_Daily
+rm(mydata, narrow, broad)
+
+####
+########################l
+load_data_monthly <- function(data=c('narrow', 'broad'), adjustment = c("Real", "Nominal")){
+  if (data=='broad'){
+    myurl <- "https://www.bis.org/statistics/eer/broad1803.xlsx"
+    if (file.exists('rawdata/broad1803.xlsx') == FALSE) { # get the zip file
+      download.file(myurl, destfile = "rawdata/broad1803.xlsx", mode="wb")
+    }
+    if(adjustment=='Real'){
+      df <- read_excel("rawdata/broad1803.xlsx", sheet = "Real", skip = 3)[-1,]
+    }
+    if(adjustment=="Nominal"){
+      {
+        df <- read_excel("rawdata/broad1803.xlsx", sheet = "Nominal", skip = 3)[-1,]
+      }
+    }
+    
+  }
+  
+  if (data=='narrow'){
+    myurl <- 'https://www.bis.org/statistics/eer/narrow1803.xlsx'
+    if (file.exists('rawdata/narrow1803.xlsx') == FALSE) { # get the zip file
+      download.file(myurl, destfile = "rawdata/narrow1803.xlsx", mode="wb")
+    }
+    if(adjustment=='Real'){
+      df <- read_excel("rawdata/narrow1803.xlsx", sheet = "Real", skip = 3)[-1,]
+    }
+    if(adjustment=="Nominal"){
+      {
+        df <- read_excel("rawdata/narrow1803.xlsx", sheet = "Nominal", skip = 3)[-1,]
+      }
+    }
+    
+  }
+  df <- as.data.frame(df)
+  nd <- df[ ,-1]
+  nd$Date <- df$`EER for:`
+  rownames(nd) <- nd$Date
+  
+  nw <- nd[ , -ncol(nd)]
+  nw <- apply(nw, 2, as.numeric)
+  nw <- as.data.frame(nw)
+  rownames(nw) <- nd$Date
+  return(nw)
+}
+lastdate <- "2018-12-31"
+df_real <- load_data_monthly('broad', 'Real')
+df_nomi <- load_data_monthly('broad', 'Nominal')
+#cbind(as.matrix(names(df_nomi)),as.matrix(names(df_real)))
+deflator <- df_nomi / df_real
+
+deflator <- xts(deflator, order.by=as.Date(rownames(deflator),"%Y-%m-%d"))
+daily <- as.data.frame(seq(as.Date('1964-01-01'),to=as.Date(lastdate),by='days'))
+colnames(daily) <- "daily"
+daily <- as.data.frame(cbind(daily, c(1:nrow(daily))))
+rownames(daily) <- daily[ ,1]
+
+daily <-  xts(daily, order.by=as.Date(rownames(daily),"%Y-%m-%d"))
+
+data <- merge(daily, deflator, join='left')
+data <- na.locf(data, fromLast = TRUE)
+data <- data[ ,-c(1,2)]
+
+rm(daily, deflator, df_nomi, df_real)
+
+final <- merge(data, broad_n_d, join='inner')
+final <- final[ , order(names(final))]
+
+final_def <- final[ ,c(seq(from=1, to=ncol(final), by=2))]
+final_nom <- final[ ,-c(seq(from=1, to=ncol(final), by=2))]
+final_real <- final_nom / final_def
+colnames(final_real) <- colnames(final_def)
+#rm(data, final, narrow_n_d)
+
+# Deflating the daily data with monthly deflator and generating weekly summary
+nd <- as.data.frame(final_real)
+nd$Date <- rownames(nd)
+write.csv(na.omit(nd), "outcomes/DailyREER.csv")
+
+
+dreer <- read.csv('outcomes/DailyREER.csv')
+
+names <- c(#'China',
+  'United.States',
+  'Germany',
+  'Japan',
+  #'Korea',
+  'France',
+  #'Hong.Kong.SAR',
+  #'Netherlands',
+  'Italy',
+  'United.Kingdom' #,
+  #'Canada',
+  #'Mexico',
+  #'Singapore',
+  #'Russia',
+  #'Chinese.Taipei',
+  #'United.Arab.Emirates',
+  #'Switzerland',
+  #'Spain',
+  #'India',
+  #'Belgium',
+  #'Thailand',
+  #'Saudi.Arabia',
+  #'Poland',
+  #'Brazil',
+  #'Australia'
+)
+
+idx <- match(names, names(dreer))
+dreer <- dreer[,idx]
+dreer <- dreer[ , order(names(dreer))]
+
+dreer$Date <- read.csv('outcomes/DailyREER.csv')[ ,1]
+dreer$Date <- as.Date(dreer$Date,'%Y-%m-%d')
+
+dreer$Week <- as.Date(cut(dreer$Date,
+                          breaks = 'week',
+                          start.on.modreeray = TRUE))
+dreer <- dreer[ ,-(ncol(dreer)-1)]
+dreer <- na.omit(dreer)
+
+invisible(ipak(c('tidyr', 'dplyr')))
+rw <- dreer %>% group_by(Week) %>% summarise_all(funs(mean(., na.rm=TRUE))) %>% as.data.frame()
+rownames(rw) <-rw[ ,1]
+rw$Week <- as.Date(rw$Week,'%Y-%m-%d')
+rw_dat <- rw
+rw <- rw[,-1]
+
+ohlc <- function(x){
+  x <- as.matrix(x)
+  o <- x[1,1]
+  c <- x[nrow(x),]
+  h <- max(x)
+  l <- min(x)
+  val <- 0.511*(h-l)^2-0.019*((c-o)*(h+l-2*o)-
+                                2*(h-o)*(l-o))-0.383*(c-o)^2
+  return(val)
+  
+}
+
+wv <- dreer %>% group_by(Week) %>% summarise_all(funs(ohlc(.))) %>% as.data.frame()
+rownames(wv) <-wv[ ,1]
+wv$Week <- as.Date(wv$Week,'%Y-%m-%d')
+wv_dat <- wv
+wv <- wv[ ,-1]
+
+rm(list=ls()[! ls() %in% c('path', 'ipak', 'rw_dat','rw', 'Week', 'wv_dat', 'wv')])
+
+
+write.csv(rw, 'outcomes/rw.csv') #returns weekly
+write.csv(rw_dat, 'outcomes/rw_dat.csv')
+
+write.csv(wv, 'outcomes/wv.csv') #weekly volatility
+write.csv(wv_dat, 'outcomes/wv_dat.csv')
+```

@@ -1,0 +1,152 @@
+```{r}
+
+growth <- function(x) x/lag(x)-1
+vardat = apply(rw, 2, function(x) growth(x))
+vardat[is.na(vardat)] <- 0
+
+# rm(list=ls()[! ls() %in% c('path', 'ipak', 'vardat', 
+#                            'date_vardat')])
+
+
+#lagorder <- c(1:4); 
+horizon <- c(1,5,10,100); slidingwindow <- c(150,250,350)
+filetxt <- capture.output(
+  #for(i in lagorder){
+  for(j in horizon){
+    for(k in slidingwindow){
+      #t <- length(lagorder) * length(lagorder)
+      # print(paste0(i,'_',j,'_',k))
+      print(paste0(j,'_',k))
+    }
+  }
+  #}
+)
+
+
+filetxt <- gsub('\\[1]', '', filetxt)
+filetxt <- gsub(' \\"', '', filetxt)
+filetxt <- gsub('\\"', '', filetxt); filetxt
+rm(list=ls()[! ls() %in% c('path', 'ipak', 'rw_dat','rw', 'Week', 'wv_dat', 'wv','vardat', 
+                           'date_vardat', 'filetxt')])
+
+fevd <- function(est, n.ahead = 100, no.corr = F) {
+  require(vars)
+  Phi <- irf(est, n.ahead = n.ahead, boot = F, ortho = F)
+  # Extract them from standard format
+  Phi <- lapply(1:(n.ahead + 1), function(j) sapply(Phi$irf, function(i) i[j, ]))
+  # Estimate the covariance matrix of the residuals
+  Sigma <- t(residuals(est)) %*% residuals(est)/nrow(residuals(est))
+  # Eliminate the off-diagonal elements of the covariance matrix to only see
+  # the effects of the coefficients This is primarily useful for Lasso.
+  if (no.corr) {
+    Sigma <- diag(diag(Sigma))
+  }
+  # Estimate the denominator of the ration of FEVD.
+  denom <- diag(Reduce("+", lapply(Phi, function(i) i %*% Sigma %*% t(i))))
+  
+  # This computes the enumerator, essentially compute all the elements of the
+  # sum and then reduce them using the sum operator.
+  enum <- Reduce("+", lapply(Phi, function(i) (chol(Sigma) %*% t(i))^2))
+  
+  # Compute the ration and return the matrix.
+  return(t(sapply(1:ncol(enum), function(i) enum[, i]/denom[i])))
+}
+dny <- function(df, max_lag, h, window) {
+  caller <- function(k) {
+    require(vars)
+    require(pbapply)
+    p = as.numeric(VARselect(df[(1:window) + k, ], lag.max = max_lag, type="none")$selection[1])
+    vmod <- fevd(vars::VAR(df[(1:window) + k, ], p = p, type="none"), 
+                 n.ahead = h)
+    #tc <- mean(colSums(vmod) - diag(vmod)) * 100
+    list(vmod)
+  }
+  output <- pbapply::pblapply(0:(nrow(df) - window), caller)
+  return(output)
+}
+mytable <- function(spillmat, n_col=ncol, rname = rname){
+  spillmat <- as.matrix(as.data.frame(spillmat)) * 100
+  spillmat <- matrix(spillmat, ncol = n_col, nrow = n_col, byrow = FALSE)
+  
+  #spillmat <- as.data.frame(spillmat)
+  #spillmat <- apply(spillmat, 2, as.numeric)
+  spillmat <- as.data.frame(spillmat)
+  rownames(spillmat) <- rname
+  colnames(spillmat) <- rname
+  
+  spill <- spillmat
+  diag(spill) = 0
+  
+  RS_1 <- as.matrix(rowSums(spillmat))
+  RS_2 <- as.matrix(rowSums(spill))
+  colnames(RS_1) = "RowSums"
+  colnames(RS_2) = "TRSED"
+  CS_1 <- t(as.matrix(colSums(spillmat)))
+  rownames(CS_1) = "ColumnSum"
+  CS_2 <- t(as.matrix(colSums(spill)))
+  rownames(CS_2) = "TCSED"
+  
+  p <- nrow(spillmat)
+  q <- ncol(spillmat)
+  
+  x <- matrix(data = NA, nrow=p, ncol=q)
+  
+  for(i in 1:p){
+    for(j in 1:q){
+      
+      x[i,j] <- spillmat[i,j] - spillmat[j,i]
+      
+      #rownames(x) <- rownames(spillmat)
+    }
+    
+  }
+  rownames(x) <- rname
+  colnames(x) <- rname
+  net_tras <- t(as.matrix(colSums(x)))
+  rownames(net_tras) = "net_transmitter"
+  x <- rbind(x, net_tras)
+  z <- as.matrix(rbind(spillmat, CS_1, CS_2, x))
+  br <- nrow(z)-nrow(RS_1)
+  blnk <- as.matrix(rep(NA, times = br), nrow=br, byrow=F)
+  RS_1 <- rbind(RS_1, blnk)
+  RS_2 <- rbind(RS_2, blnk)
+  result <- cbind(z, RS_1, RS_2)
+  result[nrow(x)+1, ncol(x)+1] <- mean(CS_2)
+  result[nrow(x)+1, ncol(x)+2] <- mean(RS_2)
+  #val <- as.list(result=result, spillmat=spillmat, spill=spill)
+  return(result)
+}
+tab_roll_data <- function(A, r, c, window = window){
+  tech_line <- function(df, r, c){
+    df <- as.matrix(df)
+    z <- as.matrix(df[r, c])
+    
+  }
+  nam <- as.matrix(rownames(A[[1]]))
+  ipak("lubridate")
+  temp1 <- as.matrix(as.data.frame(rep(NA, window-1))); colnames(temp1) <- NULL
+  temp2 <- as.matrix(do.call(rbind.data.frame, lapply(A, function(x) tech_line(x, r, c)))); colnames(temp2) <- NULL
+  val <- rbind.data.frame(temp1, temp2)
+  return(val)
+}
+
+res_rw <- list(); tab_rw <- list()
+res_wv <- list(); tab_wv <- list()
+for(m in 1:length(filetxt)){
+  val <- as.numeric(unlist(strsplit(filetxt[m], "_")))
+  
+  res_rw[[m]] <- dny(vardat, max_lag = 4, h = val[1], window = val[2])
+  tab_rw[[m]] <- lapply(res_rw[[m]], function(zz) mytable(zz, n_col=ncol(vardat), rname=colnames(vardat)))
+  
+  res_wv[[m]] <- dny(wv, max_lag = 4, h = val[1], window = val[2])
+  tab_wv[[m]] <- lapply(res_wv[[m]], function(zz) mytable(zz, n_col=ncol(vardat), rname=colnames(vardat)))
+}
+names(res_rw) <- paste0('DY_', filetxt)
+names(tab_rw) <- paste0('DY_', filetxt)
+names(res_wv) <- paste0('DY_', filetxt)
+names(tab_wv) <- paste0('DY_', filetxt)
+
+
+
+#######################
+```

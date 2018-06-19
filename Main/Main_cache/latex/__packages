@@ -1,4 +1,17 @@
 base
 tseries
+readr
+readxl
 zoo
 xts
+tidyr
+dplyr
+bindrcpp
+MASS
+sandwich
+strucchange
+urca
+lmtest
+vars
+pbapply
+lubridate

@@ -14,7 +14,7 @@ address:
   - code: Another University
     address: Davis College of Agriculture, Natural Resources and Design & Regional Research Institute (RRI), West Virginia University
 abstract: |
-  The 2007 U.S. sub-prime mortgage crisis spillover globally in 2008, sharply affecting the entire world, especially European countries. Ever since, measuring and mapping how the shocks are transmitted and received in such global network has become a vital research domain. Several papers by Diebold and Yilmaz (2009, 2014, 2015) laid foundations to analyze the financial interrelatedness based on the stock prices. However, in this paper, we investigated the dynamics of connectedness of external-competitiveness by mapping how countries are economically connected to transmit and receive external-competitiveness and by ranking the economies based on their ability to transmit or receive external-competitiveness. In our study, the external-competitiveness refers to the nation’s capability to trade at the competitive prices in the international market. As the proxy for external competitiveness, we retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange rate (EER ) from the Bank of International Settlements (BIS) for 25 major economies which includes Group of Ten (G10) , along with, Australia, Austria, Denmark, Finland, Greece, Ireland, New Zealand, Norway, Portugal and Spain and the four "Asian Newly Industrialized Economies" (NIE’s).
+  The 2007 U.S. sub-prime mortgage crisis spillover globally in 2008, sharply affecting the entire world, especially European countries. Ever since, measuring and mapping how the shocks are transmitted and received in such global network has become a vital research domain. Several papers by Diebold and Yilmaz (2009, 2014, 2015) laid foundations to analyze the financial interrelatedness based on the stock prices. However, in this paper, we investigated the dynamics of connectedness of external-competitiveness by mapping how countries are economically connected to transmit and receive external-competitiveness and by ranking the economies based on their ability to transmit or receive external-competitiveness. In our study, the external-competitiveness refers to the nation's capability to trade at the competitive prices in the international market. As the proxy for external competitiveness, we retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange rate (EER ) from the Bank of International Settlements (BIS) for 25 major economies which includes Group of Ten (G10) , along with, Australia, Austria, Denmark, Finland, Greece, Ireland, New Zealand, Norway, Portugal and Spain and the four "Asian Newly Industrialized Economies" (NIE's).
 
 bibliography: mybibfile.bib
 output: rticles::elsevier_article
@@ -26,19 +26,19 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE, warning = FALSE, message = FALS
 
 Introduction
 ==========================
-The intricately interconnectedness of global economies due to deregulation, liberalization, and spatial specialization in production followed by succession of revolutionary advances in information and communications technologies, in one hand have promoted economic prosperity while in other, have made markets vulnerable to shocks regardless of the origin of the shocks \citep{Park2017} [@Park2017]. Foreseeing how events in one country or region might spillover to other countries is primordial to Governments, private companies, and private investors. By doing so, Government's leaders can anticipate disruptive global shocks by incentive their own economy as well as by protecting vital sectors that might be essential to the nation, guaranteeing the welfare while improving the economic performance during a distress moment. Moreover, global private companies can efficiently change corporate investment in regions/sectors that might be  heavily affected to investments that do not bring that level of uncertainty. Finally, through the lens of private investors, having better information regarding the global market conditions might improve the allocation of their portfolios, maximizing gains through arbitrage. Therefore,  measuring and mapping how economic shocks are transmitted and received in such global network has become a vital research domain in which this study focus on understudying the dynamics of countries' competitiveness with respect to global economic shocks.
+The intricately interconnectedness of global economies due to deregulation, liberalization, and spatial specialization in production followed by succession of revolutionary advances in information and communications technologies, in one hand have promoted economic prosperity while in other, have made markets vulnerable to shocks regardless of the origin of the shocks [@Park2017]. Foreseeing how events in one country or region might spillover to other countries is primordial to Governments, private companies, and private investors. By doing so, Government's leaders can anticipate disruptive global shocks by incentive their own economy as well as by protecting vital sectors that might be essential to the nation, guaranteeing the welfare while improving the economic performance during a distress moment. Moreover, global private companies can efficiently change corporate investment in regions/sectors that might be  heavily affected to investments that do not bring that level of uncertainty. Finally, through the lens of private investors, having better information regarding the global market conditions might improve the allocation of their portfolios, maximizing gains through arbitrage. Therefore,  measuring and mapping how economic shocks are transmitted and received in such global network has become a vital research domain in which this study focus on understudying the dynamics of countries' competitiveness with respect to global economic shocks.
 
 Periods of distress economies such as the European Monetary System (EMS) crisis 1992-1993,  the Mexican crisis (Tequila crisis) in the end of 1994; the Thailand crisis (Asian flu) in 1997; Russian crisis (Russian virus) in 1998 and the Argentinean crisis in 2001 have persistently proven the financial and economic turbulence as the ramifications of interconnected world [@Kali2010]. Further, the 2007 U.S. sub-prime mortgage crisis followed by Lehman Brothers collapse spillover globally in 2008 sharply affecting the world and triggering the European debt crisis in 2009. Voluminous researches have concentrated on the connectedness of financial markets and its interactions while [see @Diebold2009, @Diebold2012, @Diebold2013, @Diebold2014, @Barunik2015, @Diebold2015] are pioneers.
 
 Although, due to high linked and globalized world in which shocks move regardless of geographic boundaries, identifying the transmiter and receiver of shocks can be applied to broader contexts. For an example: @Diebold2013 examine business cycle connectedness of U.S.A, Japan, France, Germany, U.K. and Italy; @Awartani2016  investigate the directional risk transfer from oil to US equities, Euro/Dollar exchange rates, precious metals and agricultural commodities and @Barunik2015 used rich time-frequency dynamics of volatility connectedness in US financial institutions; @Billio2012 measure the connectedness of returns of hedge funds, banks, broker/dealers, and insurance companies based on principal components analysis and Granger causality networks; @Bubak2011 study the dynamics of volatility transmission between Central European (CE) currencies and the EUR/USD foreign exchange; @Cimini2015 80 largest eurozone financial and non-financial entities in terms of market capitalisation. **I will cite trade networks, sectorial networks and financial too and we will seggregate..**
 
-One area of interest that is underrate and quite controversial is to measure the dynamics of international competitiveness. In general, the concept of "competitiveness" can conclave the multidimensional facets of market performances that relates to product quality, ability to innovate, rapidly adjust to customer needs, and absence of the restrictive practice in labor market [@Turner1993]. Nonetheless, its interpretation can be easily misleading since there is no unique definition of the term “competitiveness”. According to @Krugman1994, the word "competitiveness" has two different meaning depends on its application. Corporation competitiveness, it is a zero-sum game, of which if a firm A is losing its competitiveness (market share), other firms will incorporate it until the firm A goes bankrupt. On the other hand, when we refer to competitiveness in a international perspective, we cannot use the same definition above since countries do not go out of business. Hence, international competitiveness being one area of interest is controversial and thus measurement of the dynamics of international competitiveness can suffer the definitional sensitivities. But within these definitional hurdles of international competitiveness, in one hand, its clear that relative cost or prices if are too high can deter to compete internationally. Meanwhile, this clarity on the concept of competitiveness tend to be very “Zen” like because, in other hand, strong economic performances appreciates the exchange rate thus leads to higher relative cost.
+One area of interest that is underrate and quite controversial is to measure the dynamics of international competitiveness. In general, the concept of "competitiveness" can conclave the multidimensional facets of market performances that relates to product quality, ability to innovate, rapidly adjust to customer needs, and absence of the restrictive practice in labor market [@Turner1993]. Nonetheless, its interpretation can be easily misleading since there is no unique definition of the term "competitiveness". According to @Krugman1994, the word "competitiveness" has two different meaning depends on its application. Corporation competitiveness, it is a zero-sum game, of which if a firm A is losing its competitiveness (market share), other firms will incorporate it until the firm A goes bankrupt. On the other hand, when we refer to competitiveness in a international perspective, we cannot use the same definition above since countries do not go out of business. Hence, international competitiveness being one area of interest is controversial and thus measurement of the dynamics of international competitiveness can suffer the definitional sensitivities. But within these definitional hurdles of international competitiveness, in one hand, its clear that relative cost or prices if are too high can deter to compete internationally. Meanwhile, this clarity on the concept of competitiveness tend to be very "Zen" like because, in other hand, strong economic performances appreciates the exchange rate thus leads to higher relative cost.
 
-@Turner1993 clarify that if enterprises in a country become more successful in the non-price dimensions of performance — if they are innovative, flexible, produce high-quality goods and so on — then the real exchange rate would be expected to strengthen. Price and wage competitiveness — the narrow concept — would thus appear to "worsen". But such "deterioration" would of course be a symptom of success, not of failure. For the narrow concept, the effective exchange rates can be a proxy for the short run price competitiveness.
+@Turner1993 clarify that if enterprises in a country become more successful in the non-price dimensions of performance- if they are innovative, flexible, produce high-quality goods and so on -then the real exchange rate would be expected to strengthen. Price and wage competitiveness -the narrow concept- would thus appear to "worsen". But such "deterioration" would of course be a symptom of success, not of failure. For the narrow concept, the effective exchange rates can be a proxy for the short run price competitiveness.
 
 Even though our paper is mainly centers around the narrower concept of competitiveness. But translating this perception into operation measures has always faced formidable difficulties. Many attempts have been seen to quantify the price or cost competitiveness using the Real Effective Exchange rates. Fed, EU, JP, BIS..the trend appears about the same. However, we take a special precaution to interpret the Effective exchange rate. 
 
-The concept of effective exchange rate was formalized after the breakdown of the multilateral Bretton Woods system of pegged but adjustable exchange rates in the early 1970s. TSince, currencies have entered a new era of non-orderly floating exchange rates, leaving it at countries’ discretion to choose their particular exchange rate regime. Members of today’s European Union established a new regional system of pegged but adjustable exchange rates, and at the end of the 1990s, some of them permanently fixed their exchange rates and adopted the euro as their common currency. Among developing countries, too, many have chosen to peg their currencies to or stabilize them against some anchor currencies, most prominently the United States dollar, at least during some of the time [@UNCTAD2012].
+The concept of effective exchange rate was formalized after the breakdown of the multilateral Bretton Woods system of pegged but adjustable exchange rates in the early 1970s. Since, currencies have entered a new era of non-orderly floating exchange rates, leaving it at countries- discretion to choose their particular exchange rate regime. Members of today's European Union established a new regional system of pegged but adjustable exchange rates, and at the end of the 1990s, some of them permanently fixed their exchange rates and adopted the euro as their common currency. Among developing countries, too, many have chosen to peg their currencies to or stabilize them against some anchor currencies, most prominently the United States dollar, at least during some of the time [@UNCTAD2012].
 
 EER is the trade-weighted average exchange rate of a currency against a basket of currencies and the EER adjusted for inflation gives real EER (REER). In both policy and market analysis, EERs serve various purposes: as a measure of international competitiveness, as components of monetary/financial conditions indices, as a gauge of the transmission of external shocks, as an intermediate target for monetary policy or as an operational target [@Klau2006].
 
@@ -48,7 +48,7 @@ To create choices of currencies basket the currency should be at least convertib
 
 While the currencies weights are derived with various weighting schemes like: general equilibrium model-based weights like the Multilateral Exchange Rate Model (MERM) of the IMF and trade-weighting schemes based on the bilateral trade flows, global trade flows and double weights. The bilateral or global trade flows are essentially special cases of the double-weighting scheme. In a bilateral scheme it is implicitly assumed that in each export market the domestic producer constitutes the sole competitor, completely ruling out competition from other exporters to that market (i.e. competition in "third markets"). Only in each country's home market is competition between various foreign suppliers allowed for. This weighting scheme thus assigns weights to trading partners strictly in proportion to their share in the home country's exports and imports. Finally, under a global scheme it is assumed that all individual country markets collapse into a single world market in which only exporters compete. Under this assumption the currencies of partner countries are weighted in proportion to their share in world trade. 
 
-While few other papers test the co-movement of real effective exchange rate [@Nagayasu2017], these studies are rather limited as they do not report the direction of the shocks between countries, and also do not specify the relative magnitudes of their contributions. Thus, this gives us that there is a potential ground of improvement by , analyzing to the dynamics of analyze the inter and intra-regional analysis of competitiveness. Therefore, the purposes of the present paper are to investigate the dynamics of connectedness of external-competitiveness by mapping how countries are economically connected to transmit and receive price-competitiveness and by ranking the economies based on their ability to transmit or receive price-competitiveness. As the proxy for price-competitiveness, \textcolor{red}{Shishir will change this after defining the sample}we retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange rate (EER) from the Bank of International Settlements (BIS) for 25 major economies which includes Group of Ten (G10) , along with, Australia, Austria, Denmark, Finland, Greece, Ireland, New Zealand, Norway, Portugal and Spain and the four "Asian Newly Industrialized Economies" (NIE’s)  . Also, to assess the time-varying global competitiveness, we also perform the analysis in fixed period rolling window methodology.
+While few other papers test the co-movement of real effective exchange rate [@Nagayasu2017], these studies are rather limited as they do not report the direction of the shocks between countries, and also do not specify the relative magnitudes of their contributions. Thus, this gives us that there is a potential ground of improvement by , analyzing to the dynamics of analyze the inter and intra-regional analysis of competitiveness. Therefore, the purposes of the present paper are to investigate the dynamics of connectedness of external-competitiveness by mapping how countries are economically connected to transmit and receive price-competitiveness and by ranking the economies based on their ability to transmit or receive price-competitiveness. As the proxy for price-competitiveness, \textcolor{red}{Shishir will change this after defining the sample}we retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange rate (EER) from the Bank of International Settlements (BIS) for 25 major economies which includes Group of Ten (G10) , along with, Australia, Austria, Denmark, Finland, Greece, Ireland, New Zealand, Norway, Portugal and Spain and the four "Asian Newly Industrialized Economies" (NIE's)  . Also, to assess the time-varying global competitiveness, we also perform the analysis in fixed period rolling window methodology.
 
 
 Instead of using the data of the asset prices or exchange rates **( \textcolor{red}{Needs citations}which many other researchers use)** we use the data of effective exchange rate. **\textcolor{red}{Needs citations}**The Dornbusch model or overshooting theory provides a theoretical foundation that the financial market and exchange rate markets over-react promptly on unanticipated policy/shock, while, goods markets equilibrate gradually and over the time, exuberating financial and exchange rate markets dissipates.
@@ -77,13 +77,87 @@ Literature reviews
 Data and methodologies
 ==========================
 
-## Data
+```{r child = 'rscripts/00_preamble.Rmd', cache=TRUE}
+```
 
-BIS defines two NEER indexes: Broad and narrow. The broad NEER consists of 61 advanced and developing economies, whereas the narrow NEER considers only 25 advanced economies. Although the broad basket is more representative than the narrow, neither should be regarded as the “better” measurement. The narrow indices may better gauge the competitiveness among advanced countries because their products have similar elasticities of substitution. The broad indices, on the other hand, give a more global picture by taking the emerging market economies into account. As a result, they would be more useful in analyses of issues such as the sustainability of the external trade balances.
+## Data
+```{r, echo = FALSE}
+# rw <- read.csv('rscripts/outcomes/rw.csv')[,-1]
+# rw_dat <- read.csv('rscripts/outcomes/rw_dat.csv')[,-1]
+par(mfrow = c(2, 3), mai = c(0.25, 0.27, 0.25, 0.25))
+for (i in 1:ncol(rw)){
+  with(rw_dat, plot(Week, rw[,i], xaxt='n', type='l', main=as.matrix(colnames(rw))[i,1], xlab='', ylim=c(40,150)))
+  axis.Date(1, at=seq(min(rw_dat$Week), max(rw_dat$Week), by='24 mon'), format='%Y')
+  abline(h=100, lty = 2, col = 'grey')
+}
+```
+
+```{r child = 'rscripts/01_DnY.Rmd', echo = FALSE, cache=TRUE}
+
+```
+
+
+BIS defines two NEER indexes: Broad and narrow. The broad NEER consists of 61 advanced and developing economies, whereas the narrow NEER considers only 25 advanced economies. Although the broad basket is more representative than the narrow, neither should be regarded as the better measurement. The narrow indices may better gauge the competitiveness among advanced countries because their products have similar elasticities of substitution. The broad indices, on the other hand, give a more global picture by taking the emerging market economies into account. As a result, they would be more useful in analyses of issues such as the sustainability of the external trade balances.
 
 The narrow NEER consist only advanced economies while the broad NEER consist developing. Although the broad basket is more representative than the narrow one, neither should be regarded as the ``better" measure, and which one to study depends on the context. The narrow indices may better gauge the competitiveness among advanced countries because their products have similar elasticities of substitution. The broad indices, on the other hand, give a more global picture by taking the emerging market economies into account. As a result, they would be more useful in analyses of issues such as the sustainability of the external trade balances.
 
+```{r, echo=FALSE}
+# wv <- read.csv('rscripts/outcomes/wv.csv')[ ,-1]
+# wv_dat <- read.csv('rscripts/outcomes/wv_dat.csv')[,-1]
+par(mfrow = c(2, 3), mai = c(0.25, 0.27, 0.25, 0.25))
+for (i in 1:ncol(wv)){
+  with(wv_dat, plot(Week, wv[,i], xaxt='n', type='l', main=as.matrix(colnames(wv))[i,1], xlab='', ylim=c(0,4)))
+  axis.Date(1, at=seq(min(wv_dat$Week), max(wv_dat$Week), by='24 mon'), format='%Y')
+  abline(h=100, lty = 2, col = 'grey')
+}
+```
+
 For this study, we retrieved the broad  daily data of NEER from (11--04--1996 to- 08--08--2017) broad  indices of NEER indices (NEER henceforth) from the Bank of International Settlement (BIS) website. This dataset includes 61 economies, however, for our study we only considered the 25 major importer and exporter economies according to World Bank (2014). Major 25 economies (based on their merchandise imports and export reported by World Bank for year 2014). The list of countries and their respective region classification is given in Table-1. We took calculated the weekly average NEER weekly average from the of daily data NEER,  then converting theed weekly NEER to average weekly real effective exchange rate (REER) using the month specific deflator.  The monthly deflator was derived from the monthly REER and NEER. Monthly REER and NEER were also retrieved from the BIS website. 
+
+```{r, fig.height=8, fig.width=8}
+df_date <- as.Date(rownames(rw), format = '%Y-%m-%d')
+ssplot <- function(tab, name, df_date, w, r, c,legend.names, ...){
+  TC <- list()
+  for(i in 1:length(tab)){
+    val <- unlist(strsplit(names(tab)[i], "_"))
+    TC[[i]] <- tab_roll_data(tab[[i]],r,c,window=as.numeric(val[3]))
+  }
+  
+  TC <- do.call(cbind, TC)
+  colnames(TC) <- paste0(name, names(tab)); colnames(TC)
+  
+  dropvar <- function(df, grepID){
+    make_match <- paste(grepID, collapse='|')
+    df <- df[ ,-grep(make_match, colnames(df))]
+    return(df)
+  }
+  
+  retainvar <- function(df, grepID){
+    make_match <- paste(grepID,collapse='|')
+    df2 <- df[ ,grep(make_match, colnames(df))]
+    #df <- cbind(df1, df2)
+    return(df2)
+  }
+  
+  tc <- retainvar(TC, as.character(w))
+  nn <- ncol(tc)
+  tc <- xts::xts(tc, order.by=df_date, format = '%Y-%m-%d')
+  plot(tc, grid.ticks.on = 'year', grid.ticks.lty = 9, major.ticks='year',
+       major.format="%Y-%m", lty=c(1, 1,1,1), lwd=c(2,2,2,2),
+       col=c('black', 'red','green', 'blue'), ...)
+  addLegend('topleft', on=1, cex = 0.75,
+            legend.names = legend.names,lty=c(1, 1,1,1), lwd=c(2,2,2,2),
+            col=c('black', 'red','green', 'blue'))
+}
+par(mfrow=c(3,2))
+ssplot(tab_rw, name = "TC_", df_date = df_date, w = 150, r = 8, c = 7, main = 'A1.')
+ssplot(tab_rw, name = "TC_", df_date = df_date, w = 250, r = 8, c = 7, main = 'A2.')
+ssplot(tab_rw, name = "TC_", df_date = df_date, w = 350, r = 8, c = 7, main = 'A3.')
+ssplot(tab_wv, name = "TC_", df_date = df_date, w = 150, r = 8, c = 7, main = 'B1.')
+ssplot(tab_wv, name = "TC_", df_date = df_date, w = 250, r = 8, c = 7, main = 'B2.')
+ssplot(tab_wv, name = "TC_", df_date = df_date, w = 350, r = 8, c = 7, main = 'B3.')
+```
+
 
 For the analysis, we developed two sets of data. First, We consider the are the growth rates of the weekly REER of each economy and  and second is the  weekly volatility based on the daily REER under the assumption of the volatility is fixed within the week ly period but variable across weeks following [@Garman1980, Alizadeh2002] methodology. We considered the REER of Monday and Friday as weekly opening and closing value, and weekly minimum and maximum as the low and close value. The weekly estimated volatility is calculate as following: 
 

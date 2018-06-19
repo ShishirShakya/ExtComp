@@ -45,6 +45,46 @@
 \fi
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -128,23 +168,23 @@ deregulation, liberalization, and spatial specialization in production
 followed by succession of revolutionary advances in information and
 communications technologies, in one hand have promoted economic
 prosperity while in other, have made markets vulnerable to shocks
-regardless of the origin of the shocks \citep{Park2017} (Park and Shin
-2017). Foreseeing how events in one country or region might spillover to
-other countries is primordial to Governments, private companies, and
-private investors. By doing so, Government's leaders can anticipate
-disruptive global shocks by incentive their own economy as well as by
-protecting vital sectors that might be essential to the nation,
-guaranteeing the welfare while improving the economic performance during
-a distress moment. Moreover, global private companies can efficiently
-change corporate investment in regions/sectors that might be heavily
-affected to investments that do not bring that level of uncertainty.
-Finally, through the lens of private investors, having better
-information regarding the global market conditions might improve the
-allocation of their portfolios, maximizing gains through arbitrage.
-Therefore, measuring and mapping how economic shocks are transmitted and
-received in such global network has become a vital research domain in
-which this study focus on understudying the dynamics of countries'
-competitiveness with respect to global economic shocks.
+regardless of the origin of the shocks (Park and Shin 2017). Foreseeing
+how events in one country or region might spillover to other countries
+is primordial to Governments, private companies, and private investors.
+By doing so, Government's leaders can anticipate disruptive global
+shocks by incentive their own economy as well as by protecting vital
+sectors that might be essential to the nation, guaranteeing the welfare
+while improving the economic performance during a distress moment.
+Moreover, global private companies can efficiently change corporate
+investment in regions/sectors that might be heavily affected to
+investments that do not bring that level of uncertainty. Finally,
+through the lens of private investors, having better information
+regarding the global market conditions might improve the allocation of
+their portfolios, maximizing gains through arbitrage. Therefore,
+measuring and mapping how economic shocks are transmitted and received
+in such global network has become a vital research domain in which this
+study focus on understudying the dynamics of countries' competitiveness
+with respect to global economic shocks.
 
 Periods of distress economies such as the European Monetary System (EMS)
 crisis 1992-1993, the Mexican crisis (Tequila crisis) in the end of
@@ -203,10 +243,10 @@ very ``Zen'' like because, in other hand, strong economic performances
 appreciates the exchange rate thus leads to higher relative cost.
 
 Turner and Van'tdack (1993) clarify that if enterprises in a country
-become more successful in the non-price dimensions of performance --- if
-they are innovative, flexible, produce high-quality goods and so on ---
-then the real exchange rate would be expected to strengthen. Price and
-wage competitiveness --- the narrow concept --- would thus appear to
+become more successful in the non-price dimensions of performance- if
+they are innovative, flexible, produce high-quality goods and so on
+-then the real exchange rate would be expected to strengthen. Price and
+wage competitiveness -the narrow concept- would thus appear to
 ``worsen''. But such ``deterioration'' would of course be a symptom of
 success, not of failure. For the narrow concept, the effective exchange
 rates can be a proxy for the short run price competitiveness.
@@ -221,9 +261,9 @@ exchange rate.
 
 The concept of effective exchange rate was formalized after the
 breakdown of the multilateral Bretton Woods system of pegged but
-adjustable exchange rates in the early 1970s. TSince, currencies have
+adjustable exchange rates in the early 1970s. Since, currencies have
 entered a new era of non-orderly floating exchange rates, leaving it at
-countries' discretion to choose their particular exchange rate regime.
+countries- discretion to choose their particular exchange rate regime.
 Members of today's European Union established a new regional system of
 pegged but adjustable exchange rates, and at the end of the 1990s, some
 of them permanently fixed their exchange rates and adopted the euro as
@@ -326,16 +366,23 @@ following graph shows such false alarm.
 
 \subsection{Data}\label{data}
 
+\includegraphics{Main_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{verbatim}
+FALSE  [1] "1_150"   "1_250"   "1_350"   "5_150"   "5_250"   "5_350"   "10_150" 
+FALSE  [8] "10_250"  "10_350"  "100_150" "100_250" "100_350"
+\end{verbatim}
+
 BIS defines two NEER indexes: Broad and narrow. The broad NEER consists
 of 61 advanced and developing economies, whereas the narrow NEER
 considers only 25 advanced economies. Although the broad basket is more
-representative than the narrow, neither should be regarded as the
-``better'' measurement. The narrow indices may better gauge the
-competitiveness among advanced countries because their products have
-similar elasticities of substitution. The broad indices, on the other
-hand, give a more global picture by taking the emerging market economies
-into account. As a result, they would be more useful in analyses of
-issues such as the sustainability of the external trade balances.
+representative than the narrow, neither should be regarded as the better
+measurement. The narrow indices may better gauge the competitiveness
+among advanced countries because their products have similar
+elasticities of substitution. The broad indices, on the other hand, give
+a more global picture by taking the emerging market economies into
+account. As a result, they would be more useful in analyses of issues
+such as the sustainability of the external trade balances.
 
 The narrow NEER consist only advanced economies while the broad NEER
 consist developing. Although the broad basket is more representative
@@ -347,6 +394,8 @@ broad indices, on the other hand, give a more global picture by taking
 the emerging market economies into account. As a result, they would be
 more useful in analyses of issues such as the sustainability of the
 external trade balances.
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 For this study, we retrieved the broad daily data of NEER from
 (11--04--1996 to- 08--08--2017) broad indices of NEER indices (NEER
@@ -361,6 +410,20 @@ the of daily data NEER, then converting theed weekly NEER to average
 weekly real effective exchange rate (REER) using the month specific
 deflator. The monthly deflator was derived from the monthly REER and
 NEER. Monthly REER and NEER were also retrieved from the BIS website.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{ssplot}\NormalTok{(tab_rw, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{150}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{main =} \StringTok{"A1."}\NormalTok{)}
+\KeywordTok{ssplot}\NormalTok{(tab_rw, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{250}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{main =} \StringTok{"A2."}\NormalTok{)}
+\KeywordTok{ssplot}\NormalTok{(tab_rw, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{350}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{main =} \StringTok{"A3."}\NormalTok{)}
+\KeywordTok{ssplot}\NormalTok{(tab_wv, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{150}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{main =} \StringTok{"B1."}\NormalTok{)}
+\KeywordTok{ssplot}\NormalTok{(tab_wv, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{250}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{main =} \StringTok{"B2."}\NormalTok{)}
+\KeywordTok{ssplot}\NormalTok{(tab_wv, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{350}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{main =} \StringTok{"B3."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 For the analysis, we developed two sets of data. First, We consider the
 are the growth rates of the weekly REER of each economy and and second
