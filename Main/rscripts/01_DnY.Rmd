@@ -9,7 +9,7 @@ vardat[is.na(vardat)] <- 0
 
 
 #lagorder <- c(1:4); 
-horizon <- c(1,5,10,100); slidingwindow <- c(150,250,350)
+horizon <- c(1,5,10,100); slidingwindow <- c(150, 200, 250, 300)
 filetxt <- capture.output(
   #for(i in lagorder){
   for(j in horizon){
@@ -25,8 +25,8 @@ filetxt <- capture.output(
 
 filetxt <- gsub('\\[1]', '', filetxt)
 filetxt <- gsub(' \\"', '', filetxt)
-filetxt <- gsub('\\"', '', filetxt); filetxt
-rm(list=ls()[! ls() %in% c('path', 'ipak', 'rw_dat','rw', 'Week', 'wv_dat', 'wv','vardat', 
+filetxt <- gsub('\\"', '', filetxt)
+rm(list=ls()[! ls() %in% c('path', 'ipak', 'rw_dat','rw', 'Week', 'wv_dat', 'wv','vardat','horizon',  'slidingwindow',
                            'date_vardat', 'filetxt')])
 
 fevd <- function(est, n.ahead = 100, no.corr = F) {
@@ -141,12 +141,9 @@ for(m in 1:length(filetxt)){
   res_wv[[m]] <- dny(wv, max_lag = 4, h = val[1], window = val[2])
   tab_wv[[m]] <- lapply(res_wv[[m]], function(zz) mytable(zz, n_col=ncol(vardat), rname=colnames(vardat)))
 }
-names(res_rw) <- paste0('DY_', filetxt)
-names(tab_rw) <- paste0('DY_', filetxt)
-names(res_wv) <- paste0('DY_', filetxt)
-names(tab_wv) <- paste0('DY_', filetxt)
-
-
-
-#######################
+names(res_rw) <- paste0('dy_', filetxt)
+names(tab_rw) <- paste0('dy_', filetxt)
+names(res_wv) <- paste0('dy_', filetxt)
+names(tab_wv) <- paste0('dy_', filetxt)
 ```
+

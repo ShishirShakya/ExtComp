@@ -45,46 +45,6 @@
 \fi
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -150,7 +110,7 @@ Research Institute (RRI), West Virginia University}
   ranking the economies based on their ability to transmit or receive
   external-competitiveness. In our study, the external-competitiveness
   refers to the nation's capability to trade at the competitive prices in
-  the international market. As the proxy for external competitiveness, we
+  the international economy. As the proxy for external competitiveness, we
   retrieved the daily data (10/3/1983 - 2/14/2017) of effective exchange
   rate (EER ) from the Bank of International Settlements (BIS) for 25
   major economies which includes Group of Ten (G10) , along with,
@@ -167,7 +127,7 @@ The intricately interconnectedness of global economies due to
 deregulation, liberalization, and spatial specialization in production
 followed by succession of revolutionary advances in information and
 communications technologies, in one hand have promoted economic
-prosperity while in other, have made markets vulnerable to shocks
+prosperity while in other, have made economys vulnerable to shocks
 regardless of the origin of the shocks (Park and Shin 2017). Foreseeing
 how events in one country or region might spillover to other countries
 is primordial to Governments, private companies, and private investors.
@@ -179,7 +139,7 @@ Moreover, global private companies can efficiently change corporate
 investment in regions/sectors that might be heavily affected to
 investments that do not bring that level of uncertainty. Finally,
 through the lens of private investors, having better information
-regarding the global market conditions might improve the allocation of
+regarding the global economy conditions might improve the allocation of
 their portfolios, maximizing gains through arbitrage. Therefore,
 measuring and mapping how economic shocks are transmitted and received
 in such global network has become a vital research domain in which this
@@ -364,123 +324,37 @@ following graph shows such false alarm.
 
 \section{Data and methodologies}\label{data-and-methodologies}
 
-\subsection{Data}\label{data}
+\subsection{\texorpdfstring{\textbf{Data}}{Data}}\label{data}
 
-\includegraphics{Main_files/figure-latex/unnamed-chunk-3-1.pdf}
-
-\begin{verbatim}
-FALSE  [1] "1_150"   "1_250"   "1_350"   "5_150"   "5_250"   "5_350"   "10_150" 
-FALSE  [8] "10_250"  "10_350"  "100_150" "100_250" "100_350"
-\end{verbatim}
-
-BIS defines two NEER indexes: Broad and narrow. The broad NEER consists
-of 61 advanced and developing economies, whereas the narrow NEER
-considers only 25 advanced economies. Although the broad basket is more
-representative than the narrow, neither should be regarded as the better
-measurement. The narrow indices may better gauge the competitiveness
-among advanced countries because their products have similar
-elasticities of substitution. The broad indices, on the other hand, give
-a more global picture by taking the emerging market economies into
-account. As a result, they would be more useful in analyses of issues
-such as the sustainability of the external trade balances.
-
-The narrow NEER consist only advanced economies while the broad NEER
-consist developing. Although the broad basket is more representative
-than the narrow one, neither should be regarded as the ``better"
-measure, and which one to study depends on the context. The narrow
+Bank of International Settlement (BIS) defines two types of EER indexes
+(EER): Broad and narrow. The broad EER consists of 61 advanced and
+developing economies, whereas the narrow EER considers only 25 advanced
+economies. Although the broad basket is more representative than the
+narrow, neither should be regarded as the better measurement. The narrow
 indices may better gauge the competitiveness among advanced countries
 because their products have similar elasticities of substitution. The
 broad indices, on the other hand, give a more global picture by taking
 the emerging market economies into account. As a result, they would be
 more useful in analyses of issues such as the sustainability of the
-external trade balances.
+external trade balances. Our study is based on the broad EERs.
 
-\includegraphics{Main_files/figure-latex/unnamed-chunk-5-1.pdf}
+We retrieve broad nominal (available daily and monthly) and broad real
+(available monthly) effective exchange rate (EER) index data available
+from BIS for France, Germany, Italy, Japan, United Kingdom and United
+States from 1996-04-08 to 2018-02-26. These indices are base to 100 for
+year 2010. We deflate daily nominal EER by respective monthly deflator
+-which is ratio of monthly nominal and real effective exchange rate- to
+generate daily real EER (REER).
 
-For this study, we retrieved the broad daily data of NEER from
-(11--04--1996 to- 08--08--2017) broad indices of NEER indices (NEER
-henceforth) from the Bank of International Settlement (BIS) website.
-This dataset includes 61 economies, however, for our study we only
-considered the 25 major importer and exporter economies according to
-World Bank (2014). Major 25 economies (based on their merchandise
-imports and export reported by World Bank for year 2014). The list of
-countries and their respective region classification is given in
-Table-1. We took calculated the weekly average NEER weekly average from
-the of daily data NEER, then converting theed weekly NEER to average
-weekly real effective exchange rate (REER) using the month specific
-deflator. The monthly deflator was derived from the monthly REER and
-NEER. Monthly REER and NEER were also retrieved from the BIS website.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df_date <-}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\KeywordTok{rownames}\NormalTok{(rw), }\DataTypeTok{format =} \StringTok{"%Y-%m-%d"}\NormalTok{)}
-\NormalTok{ssplot <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(tab, name, df_date, w, r, c, legend.names, ...) \{}
-\NormalTok{    TC <-}\StringTok{ }\KeywordTok{list}\NormalTok{()}
-    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(tab)) \{}
-\NormalTok{        val <-}\StringTok{ }\KeywordTok{unlist}\NormalTok{(}\KeywordTok{strsplit}\NormalTok{(}\KeywordTok{names}\NormalTok{(tab)[i], }\StringTok{"_"}\NormalTok{))}
-\NormalTok{        TC[[i]] <-}\StringTok{ }\KeywordTok{tab_roll_data}\NormalTok{(tab[[i]], r, c, }\DataTypeTok{window =} \KeywordTok{as.numeric}\NormalTok{(val[}\DecValTok{3}\NormalTok{]))}
-\NormalTok{    \}}
-    
-\NormalTok{    TC <-}\StringTok{ }\KeywordTok{do.call}\NormalTok{(cbind, TC)}
-    \KeywordTok{colnames}\NormalTok{(TC) <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(name, }\KeywordTok{names}\NormalTok{(tab))}
-    
-\NormalTok{    dropvar <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(df, grepID) \{}
-\NormalTok{        make_match <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(grepID, }\DataTypeTok{collapse =} \StringTok{"|"}\NormalTok{)}
-\NormalTok{        df <-}\StringTok{ }\NormalTok{df[, }\OperatorTok{-}\KeywordTok{grep}\NormalTok{(make_match, }\KeywordTok{colnames}\NormalTok{(df))]}
-        \KeywordTok{return}\NormalTok{(df)}
-\NormalTok{    \}}
-    
-\NormalTok{    retainvar <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(df, grepID) \{}
-\NormalTok{        make_match <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(grepID, }\DataTypeTok{collapse =} \StringTok{"|"}\NormalTok{)}
-\NormalTok{        df2 <-}\StringTok{ }\NormalTok{df[, }\KeywordTok{grep}\NormalTok{(make_match, }\KeywordTok{colnames}\NormalTok{(df))]}
-        \CommentTok{# df <- cbind(df1, df2)}
-        \KeywordTok{return}\NormalTok{(df2)}
-\NormalTok{    \}}
-    
-\NormalTok{    tc <-}\StringTok{ }\KeywordTok{retainvar}\NormalTok{(TC, }\KeywordTok{as.character}\NormalTok{(w))}
-\NormalTok{    nn <-}\StringTok{ }\KeywordTok{ncol}\NormalTok{(tc)}
-    \KeywordTok{ipak}\NormalTok{(}\StringTok{"xts"}\NormalTok{)}
-\NormalTok{    tc <-}\StringTok{ }\NormalTok{xts}\OperatorTok{::}\KeywordTok{xts}\NormalTok{(tc, }\DataTypeTok{order.by =}\NormalTok{ df_date, }\DataTypeTok{format =} \StringTok{"%Y-%m-%d"}\NormalTok{)}
-    \KeywordTok{plot}\NormalTok{(tc, }\DataTypeTok{grid.ticks.on =} \StringTok{"year"}\NormalTok{, }\DataTypeTok{grid.ticks.lty =} \DecValTok{9}\NormalTok{, }\DataTypeTok{major.ticks =} \StringTok{"year"}\NormalTok{, }
-        \DataTypeTok{major.format =} \StringTok{"%Y-%m"}\NormalTok{, }\DataTypeTok{lty =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{lwd =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }
-            \StringTok{"red"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), ...)}
-\NormalTok{    xts}\OperatorTok{::}\KeywordTok{addLegend}\NormalTok{(}\StringTok{"topleft"}\NormalTok{, }\DataTypeTok{on =} \DecValTok{1}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{0.75}\NormalTok{, }\DataTypeTok{legend.names =}\NormalTok{ legend.names, }
-        \DataTypeTok{lty =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{lwd =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }
-            \StringTok{"blue"}\NormalTok{))}
-\NormalTok{\}}
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\KeywordTok{ssplot}\NormalTok{(tab_rw, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{150}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{legend.names =} \OtherTok{NULL}\NormalTok{, }
-    \DataTypeTok{main =} \StringTok{"A1."}\NormalTok{)}
-\KeywordTok{ssplot}\NormalTok{(tab_rw, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{250}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{legend.names =} \OtherTok{NULL}\NormalTok{, }
-    \DataTypeTok{main =} \StringTok{"A2."}\NormalTok{)}
-\KeywordTok{ssplot}\NormalTok{(tab_rw, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{350}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{legend.names =} \OtherTok{NULL}\NormalTok{, }
-    \DataTypeTok{main =} \StringTok{"A3."}\NormalTok{)}
-\KeywordTok{ssplot}\NormalTok{(tab_wv, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{150}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{legend.names =} \OtherTok{NULL}\NormalTok{, }
-    \DataTypeTok{main =} \StringTok{"B1."}\NormalTok{)}
-\KeywordTok{ssplot}\NormalTok{(tab_wv, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{250}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{legend.names =} \OtherTok{NULL}\NormalTok{, }
-    \DataTypeTok{main =} \StringTok{"B2."}\NormalTok{)}
-\KeywordTok{ssplot}\NormalTok{(tab_wv, }\DataTypeTok{name =} \StringTok{"TC_"}\NormalTok{, }\DataTypeTok{df_date =}\NormalTok{ df_date, }\DataTypeTok{w =} \DecValTok{350}\NormalTok{, }\DataTypeTok{r =} \DecValTok{8}\NormalTok{, }\DataTypeTok{c =} \DecValTok{7}\NormalTok{, }\DataTypeTok{legend.names =} \OtherTok{NULL}\NormalTok{, }
-    \DataTypeTok{main =} \StringTok{"B3."}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Main_files/figure-latex/robustplot-1.pdf}
-
-For the analysis, we developed two sets of data. First, We consider the
-are the growth rates of the weekly REER of each economy and and second
-is the weekly volatility based on the daily REER under the assumption of
-the volatility is fixed within the week ly period but variable across
-weeks following (Garman, Mark and Klass 1980, Alizadeh2002) methodology.
-We considered the REER of Monday and Friday as weekly opening and
-closing value, and weekly minimum and maximum as the low and close
-value. The weekly estimated volatility is calculate as following:
-
-Then they use the implied volatility and assume that the implied
-volatility is fixed within periods (in this case, weeks) but variable
-across periods. Then, following Garman, Mark and Klass (1980) and
-Alizadeh, Brandt, and Diebold (2002), we can use weekly high, low,
-opening and closing prices obtained from underlying daily
-high/low/open/close data to estimate weekly stock return volatility:
+For the analysis, we developed two sets of data. First, we consider the
+are the growth rates of the weekly REER of each economy (see Figure 1)
+and second is the weekly volatility index (see Figure 2) based on the
+daily REER under the assumption of the volatility is fixed within the
+weekly period but variable across weeks following Garman, Mark and Klass
+(1980) and Alizadeh, Brandt, and Diebold (2002) methodology. We consider
+the REER of Monday and Friday as weekly opening and closing value, and
+weekly minimum and maximum as the low and close value. The weekly
+estimated volatility is calculate as following:
 
 \[{{\hat{\sigma }}^{2}}=0.511{{\left( {{H}_{t}}-{{L}_{t}} \right)}^{2}}-0.019\left[ \left( {{C}_{t}}-{{O}_{t}} \right)\left( {{H}_{t}}+{{L}_{t}}-2{{O}_{t}} \right)-2\left( {{H}_{t}}-{{O}_{t}} \right)\left( {{L}_{t}}-{{O}_{t}} \right) \right]-0.383{{\left( {{C}_{t}}-{{O}_{t}} \right)}^{2}}\]
 
@@ -488,8 +362,23 @@ where, \(H\) is the Monday-Friday high, \(L\) is the Monday-Friday low,
 \(O\) is the Monday open and \(C\) is the Friday close (all in natural
 logarithms).
 
-\subsection{Diebold and Yilmaz
-methodology}\label{diebold-and-yilmaz-methodology}
+\subsubsection{\texorpdfstring{\textbf{Figure 1: Trend of weekly real
+effective exchange rate from 1996-04-08 to
+2018-02-26.}}{Figure 1: Trend of weekly real effective exchange rate from 1996-04-08 to 2018-02-26.}}\label{figure-1-trend-of-weekly-real-effective-exchange-rate-from-1996-04-08-to-2018-02-26.}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\subsubsection{\texorpdfstring{\textbf{Figure 2: Volatility of weekly
+real effective exchange rate from 1996-04-08 to
+2018-02-26.}}{Figure 2: Volatility of weekly real effective exchange rate from 1996-04-08 to 2018-02-26.}}\label{figure-2-volatility-of-weekly-real-effective-exchange-rate-from-1996-04-08-to-2018-02-26.}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\subsection{\texorpdfstring{\textbf{Diebold and Yilmaz
+methodology}}{Diebold and Yilmaz methodology}}\label{diebold-and-yilmaz-methodology}
+
+\subsubsection{\texorpdfstring{\textbf{Vector autoregression (VAR)
+model}}{Vector autoregression (VAR) model}}\label{vector-autoregression-var-model}
 
 Vector autoregression (VAR) model is a stochastic process to capture the
 linear interdependencies among multiple stationary time series by
@@ -507,7 +396,7 @@ system can be defined as:
 The basic component of Diebold and Yilmaz (D\&Y) model is the
 generalized variance decomposition of forecast errors of an \(N-\)
 variables (economies), \(p\) lagged covariance stationary vector
-auto-regression \(VAR\left( p \right)\)approximating model. Such
+auto-regression \(VAR\left( p \right)\) approximating model. Such
 \(VAR\left( p \right)\) system is defined as:
 
 \[{{x}_{t}}=\sum\nolimits_{i=1}^{p}{{{\Phi }_{i}}{{x}_{t-i}}+{{\varepsilon }_{t}}}\]
@@ -538,7 +427,11 @@ with \({{A}_{0}}\) being an \(N\times N\) identity matrix and
 transformations such as impulse response functions or variance
 decomposition) provides the dynamics of the system.
 
-The variance decompositions allow to split the H-step ahead forecast
+\subsubsection{\texorpdfstring{\textbf{Variance decomposition matrix
+(VDM) and various
+connectedness}}{Variance decomposition matrix (VDM) and various connectedness}}\label{variance-decomposition-matrix-vdm-and-various-connectedness}
+
+The variance decompositions allow to split the \(H\)-step ahead forecast
 error of each variable into parts that can be attributable to the
 various market shocks. The aggregation of these decompositions will be
 subsequently used to compute the directional connectedness from an
@@ -554,7 +447,7 @@ decompositions, of which it VAR that allows for correlated shocks but
 accounts for them appropriately. The framework, which we denote KPPS,
 has been first proposed by Koop et al. (1996) and Pesaran and Shin
 (1998). The KPPS forecast error variance decomposition matrix (VDM) for
-H step ahead is computed as:
+\(H\)-step ahead is computed as:
 
 \[\theta _{ij}^{g}\left( H \right)=\frac{\sigma _{jj}^{-1}\sum\nolimits_{h=0}^{H-1}{{{\left( {{{{e}'}}_{i}}{{h}_{h}}\Omega {{e}_{j}} \right)}^{2}}}}{\sum\nolimits_{h=0}^{H-1}{\left( {{{{e}'}}_{i}}{{h}_{h}}\Omega {{e}_{j}} \right)}}\]
 
@@ -562,9 +455,12 @@ Where, \({{\sigma }_{jj}}\) is the standard deviation of the error term
 of the \({{j}^{th}}\) economy and \({{e}_{i}}\) is a selection vector
 with one on the \({{i}^{th}}\) element and zero otherwise.
 
+\subsubsection{\texorpdfstring{\textbf{Pairwise direction
+connectedness}}{Pairwise direction connectedness}}\label{pairwise-direction-connectedness}
+
 To provide the information about the relative importance of each random
 innovation to the variables in the VAR (information relative to the size
-of endogenous and exogenous shocks on a given market), we can normalize
+of endogenous and exogenous shocks on a given economy), we can normalize
 each entry with its respective row as:
 
 \[\tilde{\theta }_{ij}^{g}\left( H \right)=\frac{\theta _{ij}^{g}\left( H \right)}{\sum\nolimits_{j=1}^{N}{\theta _{ij}^{g}\left( H \right)}}\]
@@ -573,6 +469,7 @@ Which implies the row sum for any \({{i}^{th}}\) economy to be
 \(\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}=1\),
 hence row sums across all the economy be
 \(\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}=N\).
+
 Now each element of the row wise standardized VDM i.e
 \({\tilde \theta _{ij}^g\left( H \right)}\) can be interpreted as the
 pairwise directional connectedness from economy \(j\) to economy \(i\)
@@ -585,6 +482,9 @@ connectedness then can be defined as
 
 \[{{C}_{ij}}={{C}_{i\leftarrow j}}\left( H \right)-{{C}_{j\leftarrow i}}\left( H \right)\]
 
+\subsubsection{\texorpdfstring{\textbf{Net-pairwise directional
+connectedness}}{Net-pairwise directional connectedness}}\label{net-pairwise-directional-connectedness}
+
 The net pairwise directional connectedness identifies the dominant
 economy who transmit the information. Note that
 \({{C}_{ij}}=-{{C}_{ji}}\) and if \({{C}_{ij}}>0\) then, economy
@@ -596,20 +496,63 @@ to economy \(i\) except from itself can be denoted as the row sum
 
 \[{{C}_{i\leftarrow \bullet }}\left( H \right)=\frac{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}{N}\]
 
-Similarly, to compute how a market \(i\) is contributing to the shocks
+Similarly, to compute how a economy \(i\) is contributing to the shocks
 of all other economy (except by itself) by aggregating partially as
 
 \[{{C}_{\bullet \leftarrow i}}\left( H \right)=\frac{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{i=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}{N}\]
+
+\subsubsection{\texorpdfstring{\textbf{Net-directional connectedness and
+total
+connectedness}}{Net-directional connectedness and total connectedness}}\label{net-directional-connectedness-and-total-connectedness}
 
 Then the net directional connectedness can be measured as:
 
 \[{{C}_{i}}\left( H \right)={{C}_{i\leftarrow \bullet }}\left( H \right)-{{C}_{\bullet \leftarrow i}}\left( H \right)\]
 
-The total aggregation of the variance decompositions across all markets
+The total aggregation of the variance decompositions across all economys
 measures the system-wide connectedness. The total connectedness in all
-markets can be computed as:
+economys can be computed as:
 
 \[C\left( H \right)=\frac{\sum\nolimits_{i=1,i\ne j}^{N}{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{i=1,i\ne j}^{N}{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}}{N}\]
+
+\subsubsection{\texorpdfstring{\textbf{Sample
+connectedness}}{Sample connectedness}}\label{sample-connectedness}
+
+The static, unconditional connectedness can be expressed as
+\(C\left( x,H,A\left( L \right) \right)\) because the connectedness
+\(C\) depends upon the set of variables \(x\) whose connectedness is to
+be examined, the predictive horizon \(H\) for variance decompositions,
+and the dynamics \(A\left( L \right)\). Since, \(A\left( L \right)\) is
+unknown in reality but can be approximated using a finite ordered vector
+autoregression \(M\left( L;\theta \right)\) -which is a dynamic
+approximating model with finite dimensional parameter \(\theta\). Allow
+for time-varying connectedness can equip analysis to capture evolution
+that may arise in economy from changing tastes, technologies,
+institutions, business cycles, abrupt financial market environments
+(e.g., crisis, non-crisis) (F. X. Diebold and Yilmaz 2014). Such
+time-varying connectedness can be expressed as
+\({{C}_{t}}\left( x,H,{{A}_{t}}\left( L \right),M\left( L;{{\theta }_{t}} \right) \right)\).
+Because of finite samples of observed data sample, we can only estimate
+approximating models, so we express the sample estimated connectedness
+as
+\({{\overset{\frown }{\mathop{C}}\,}_{t}}\left( x,H,{{A}_{t}}\left( L \right),M\left( L_{t}^{*};{{{\hat{\theta }}}_{t}} \right) \right)\)
+where the data sample runs from \(t=1,\ldots ,T\) and \(L_{t}^{*}\) is
+the optimum lag selection using some information criterion for
+approximating VAR model for each data sample. We use Akaike Information
+criterion to select the optimum lag for approximating VAR and allow 4
+lags as the maximum lags.
+
+The choice of \(x\) has at least three sub-issues: first is the choice
+of \(x\) or variable itself; second is the transformation of the
+variable e.g.~log transformations, differences, growth rate e.t.c.;
+third is the observational frequency (daily, monthly,\ldots{}). The
+choice of \(x\) may (or may not) be strongly serially correlated,
+conditionally heteroskedastic, or highly disaggregated. The
+connectedness measurements generally will not, and should not, be robust
+to choice of reference universe (F. X. Diebold and Yilmaz 2014).
+
+Intuitively, as the horizon lengthens there may be more chance for
+connectedness to appear.
 
 \section{Results and discussions}\label{results-and-discussions}
 
