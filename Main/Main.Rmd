@@ -114,7 +114,7 @@ for (i in 1:ncol(wv)){
 
 For this study, we retrieved the broad  daily data of NEER from (11--04--1996 to- 08--08--2017) broad  indices of NEER indices (NEER henceforth) from the Bank of International Settlement (BIS) website. This dataset includes 61 economies, however, for our study we only considered the 25 major importer and exporter economies according to World Bank (2014). Major 25 economies (based on their merchandise imports and export reported by World Bank for year 2014). The list of countries and their respective region classification is given in Table-1. We took calculated the weekly average NEER weekly average from the of daily data NEER,  then converting theed weekly NEER to average weekly real effective exchange rate (REER) using the month specific deflator.  The monthly deflator was derived from the monthly REER and NEER. Monthly REER and NEER were also retrieved from the BIS website. 
 
-```{r, fig.height=8, fig.width=8}
+```{r robustplot, fig.height=8, fig.width=8, cache=FALSE}
 df_date <- as.Date(rownames(rw), format = '%Y-%m-%d')
 ssplot <- function(tab, name, df_date, w, r, c,legend.names, ...){
   TC <- list()
@@ -124,7 +124,7 @@ ssplot <- function(tab, name, df_date, w, r, c,legend.names, ...){
   }
   
   TC <- do.call(cbind, TC)
-  colnames(TC) <- paste0(name, names(tab)); colnames(TC)
+  colnames(TC) <- paste0(name, names(tab))
   
   dropvar <- function(df, grepID){
     make_match <- paste(grepID, collapse='|')
@@ -141,21 +141,22 @@ ssplot <- function(tab, name, df_date, w, r, c,legend.names, ...){
   
   tc <- retainvar(TC, as.character(w))
   nn <- ncol(tc)
+  ipak('xts')
   tc <- xts::xts(tc, order.by=df_date, format = '%Y-%m-%d')
   plot(tc, grid.ticks.on = 'year', grid.ticks.lty = 9, major.ticks='year',
        major.format="%Y-%m", lty=c(1, 1,1,1), lwd=c(2,2,2,2),
        col=c('black', 'red','green', 'blue'), ...)
-  addLegend('topleft', on=1, cex = 0.75,
+  xts::addLegend('topleft', on=1, cex = 0.75,
             legend.names = legend.names,lty=c(1, 1,1,1), lwd=c(2,2,2,2),
             col=c('black', 'red','green', 'blue'))
 }
 par(mfrow=c(3,2))
-ssplot(tab_rw, name = "TC_", df_date = df_date, w = 150, r = 8, c = 7, main = 'A1.')
-ssplot(tab_rw, name = "TC_", df_date = df_date, w = 250, r = 8, c = 7, main = 'A2.')
-ssplot(tab_rw, name = "TC_", df_date = df_date, w = 350, r = 8, c = 7, main = 'A3.')
-ssplot(tab_wv, name = "TC_", df_date = df_date, w = 150, r = 8, c = 7, main = 'B1.')
-ssplot(tab_wv, name = "TC_", df_date = df_date, w = 250, r = 8, c = 7, main = 'B2.')
-ssplot(tab_wv, name = "TC_", df_date = df_date, w = 350, r = 8, c = 7, main = 'B3.')
+ssplot(tab_rw, name = "TC_", df_date = df_date, w = 150, r = 8, c = 7, legend.names=NULL, main = 'A1.')
+ssplot(tab_rw, name = "TC_", df_date = df_date, w = 250, r = 8, c = 7, legend.names=NULL, main = 'A2.')
+ssplot(tab_rw, name = "TC_", df_date = df_date, w = 350, r = 8, c = 7, legend.names=NULL, main = 'A3.')
+ssplot(tab_wv, name = "TC_", df_date = df_date, w = 150, r = 8, c = 7, legend.names=NULL, main = 'B1.')
+ssplot(tab_wv, name = "TC_", df_date = df_date, w = 250, r = 8, c = 7, legend.names=NULL, main = 'B2.')
+ssplot(tab_wv, name = "TC_", df_date = df_date, w = 350, r = 8, c = 7, legend.names=NULL, main = 'B3.')
 ```
 
 
