@@ -24,6 +24,10 @@ output: rticles::elsevier_article
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE, warning = FALSE, message = FALSE, tidy = TRUE, comment=FALSE)
 ```
 
+```{r, echo=FALSE}
+load("EXT_COMP.RData")
+```
+
 Introduction
 ==========================
 The intricately interconnectedness of global economies due to deregulation, liberalization, and spatial specialization in production followed by succession of revolutionary advances in information and communications technologies, in one hand have promoted economic prosperity while in other, have made economys vulnerable to shocks regardless of the origin of the shocks [@Park2017]. Foreseeing how events in one country or region might spillover to other countries is primordial to Governments, private companies, and private investors. By doing so, Government's leaders can anticipate disruptive global shocks by incentive their own economy as well as by protecting vital sectors that might be essential to the nation, guaranteeing the welfare while improving the economic performance during a distress moment. Moreover, global private companies can efficiently change corporate investment in regions/sectors that might be  heavily affected to investments that do not bring that level of uncertainty. Finally, through the lens of private investors, having better information regarding the global economy conditions might improve the allocation of their portfolios, maximizing gains through arbitrage. Therefore,  measuring and mapping how economic shocks are transmitted and received in such global network has become a vital research domain in which this study focus on understudying the dynamics of countries' competitiveness with respect to global economic shocks.
@@ -78,49 +82,6 @@ Data and methodologies
 ==========================
 
 ## **Data**
-```{r child = 'rscripts/00_preamble.Rmd', cache=TRUE}
-```
-
-```{r child = 'rscripts/01_DnY.Rmd', echo = FALSE, cache=TRUE}
-
-```
-
-```{r robustplot, echo=FALSE, fig.height=8, fig.width=8, cache=FALSE}
-df_date <- as.Date(rownames(rw), format = '%Y-%m-%d')
-ssplot_xts <- function(tab, name, df_date, w, r, c, ...){
-  TC <- list()
-  for(i in 1:length(tab)){
-    val <- unlist(strsplit(names(tab)[i], "_"))
-    TC[[i]] <- tab_roll_data(tab[[i]],r,c,window=as.numeric(val[3]))
-  }
-  
-  TC <- do.call(cbind, TC)
-  colnames(TC) <- paste0(name, names(tab)); colnames(TC)
-  
-  dropvar <- function(df, grepID){
-    make_match <- paste(grepID, collapse='|')
-    df <- df[ ,-grep(make_match, colnames(df))]
-    return(df)
-  }
-  
-  retainvar <- function(df, grepID){
-    make_match <- paste(grepID,collapse='|')
-    df2 <- df[ ,grep(make_match, colnames(df))]
-    #df <- cbind(df1, df2)
-    return(df2)
-  }
-  
-  tc <- retainvar(TC, as.character(w))
-  nn <- ncol(tc)
-  ipak('xts')
-  tc <- xts::xts(tc, order.by=df_date, format = '%Y-%m-%d')
-  zoo::plot.zoo(tc, screens = 1, xlab="", ylab = '', col= rainbow(nn), lwd = 2,...)
-  zoo::autoplot.zoo(tc)
-  grid()
-}
-cname <- gsub("[.]", " ", colnames(rw))
-```
-
 Bank of International Settlement (BIS) defines two types of EER indexes (EER): Broad and narrow. The broad EER consists of 61 advanced and developing economies, whereas the narrow EER considers only 25 advanced economies. Although the broad basket is more representative than the narrow, neither should be regarded as the better measurement. The narrow indices may better gauge the competitiveness among advanced countries because their products have similar elasticities of substitution. The broad indices, on the other hand, give a more global picture by taking the emerging market economies into account. As a result, they would be more useful in analyses of issues such as the sustainability of the external trade balances. Our study is based on the broad EERs.
 
 We retrieve broad nominal (available daily and monthly) and broad real (available monthly) effective exchange rate (EER) index data available from BIS for `r cname[1:(length(cname)-1)]` and `r cname[length(cname)]` from `r df_date[1]` to `r df_date[length(df_date)]`. These indices are base to 100 for year 2010. We deflate daily nominal EER by respective monthly deflator -which is ratio of monthly nominal and real effective exchange rate- to generate daily real EER (REER).
@@ -184,6 +145,8 @@ The variance decompositions computation is usually done by using orthogonal VAR 
 
 Where, ${{\sigma }_{jj}}$ is the standard deviation of the error term of the ${{j}^{th}}$ economy and ${{e}_{i}}$ is a selection vector with one on the ${{i}^{th}}$ element and zero otherwise.
 
+The connectedness horizon $H$ is important because it helps to analyze the connectedness in "short-run" and "long run". Consider a pairwise connectedness example, shocks to $j$ many impact the forecast error variance of $i$ only with a lag, such that ${{C}_{i\leftarrow j}}$ may be small for small $H$ but nevertheless larger for larger $H$. Intuitively, as the horizon lengthens there may be more chances for connectedness to appear and $H$ approaches to infinity, it gives an unconditional variance decomposition. We use $H=10$ weeks in our main analysis but also provide results with different $H$ sequences. 
+
 ### **Pairwise direction connectedness**
 To provide the information about the relative importance of each random innovation to the variables in the VAR (information relative to the size of endogenous and exogenous shocks on a given economy), we can normalize each entry with its respective row as:
 
@@ -216,18 +179,170 @@ The total aggregation of the variance decompositions across all economys measure
 \[C\left( H \right)=\frac{\sum\nolimits_{i=1,i\ne j}^{N}{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}}{\sum\nolimits_{i=1}^{N}{\sum\nolimits_{j=1}^{N}{\tilde{\theta }_{ij}^{g}\left( H \right)}}}=\frac{\sum\nolimits_{i=1,i\ne j}^{N}{\sum\nolimits_{j=1,j\ne i}^{N}{\tilde{\theta }_{ji}^{g}\left( H \right)}}}{N}\]
 
 ### **Sample connectedness**
-The static, unconditional connectedness can be expressed as $C\left( x,H,A\left( L \right) \right)$ because the connectedness $C$ depends upon the set of variables $x$ whose connectedness is to be examined, the predictive horizon $H$ for variance decompositions, and the dynamics $A\left( L \right)$. Since, $A\left( L \right)$ is unknown in reality but can be approximated using a finite ordered vector autoregression $M\left( L;\theta  \right)$ -which is a dynamic approximating model with finite dimensional parameter $\theta$. Allow for time-varying connectedness can equip analysis to capture evolution that may arise in economy from changing tastes, technologies, institutions, business cycles, abrupt financial market environments (e.g., crisis, non-crisis) [@Diebold2014]. Such time-varying connectedness can be expressed as ${{C}_{t}}\left( x,H,{{A}_{t}}\left( L \right),M\left( L;{{\theta }_{t}} \right) \right)$. Because of finite samples of observed data sample, we can only estimate approximating models, so we express the sample estimated connectedness as ${{\overset{\frown }{\mathop{C}}\,}_{t}}\left( x,H,{{A}_{t}}\left( L \right),M\left( L_{t}^{*};{{{\hat{\theta }}}_{t}} \right) \right)$ where the data sample runs from $t=1,\ldots ,T$ and $L_{t}^{*}$ is the optimum lag selection using some information criterion for approximating VAR model for each data sample. We use Akaike Information criterion to select the optimum lag for approximating VAR and allow 4 lags as the maximum lags.
-
- The choice of $x$ has at least three sub-issues: first is the choice of $x$ or variable itself; second is the transformation of the variable e.g. log transformations, differences, growth rate e.t.c.; third is the observational frequency (daily, monthly,...). The choice of $x$ may (or may not) be strongly serially correlated, conditionally heteroskedastic, or highly disaggregated. The connectedness measurements generally will not, and should not, be robust to choice of reference universe [@Diebold2014].
- 
- 
-Intuitively, as the
-horizon lengthens there may be more chance for connectedness
-to appear.
+The static, unconditional connectedness can be expressed as $C\left( x,H,A\left( L \right) \right)$ because the connectedness $C$ depends upon the set of variables $x$ whose connectedness is to be examined, the predictive horizon $H$ for variance decompositions, and the dynamics $A\left( L \right)$. Since, $A\left( L \right)$ is unknown in reality but can be approximated using a finite ordered vector autoregression $M\left( L;\theta  \right)$ -which is a dynamic approximating model with finite dimensional parameter $\theta$. Allow for time-varying connectedness can equip analysis to capture evolution that may arise in economy from changing tastes, technologies, institutions, business cycles, abrupt financial market environments (e.g., crisis, non-crisis) [@Diebold2014]. Such time-varying connectedness can be expressed as ${{C}_{t}}\left( x,H,{{A}_{t}}\left( L \right),M\left( L;{{\theta }_{t}} \right) \right)$. Because of finite samples of observed data sample, we can only estimate approximating models, so we express the sample estimated connectedness as ${{\overset{\frown }{\mathop{C}}\,}_{t}}\left( x,H,{{A}_{t}}\left( L \right),M\left( L_{t}^{*};{{{\hat{\theta }}}_{t}} \right) \right)$ where the data sample runs from $t=1,\ldots ,T$ and $L_{t}^{*}$ is the optimum lag selection using some information criterion for approximating VAR model for each data sample. We use Akaike Information criterion to select the optimum lag for approximating VAR and allow 4 lags as the maximum lags. For this purpose, we use 250 weeks rolling window to perform the analysis and later facilitate several different rolling window periods for analysis.
 
 
 Results and discussions
 ==========================
+## **Table-1: Descriptive Statistics**
+```{r, echo=FALSE}
+descriptives <- function(y){
+  ipak('tseries')
+  stdy <- apply(y, 2, sd)
+  z <- t( apply((y-colMeans(y)), 1, '/',stdy))
+  
+ val <-  cbind('Mean' = colMeans(y), #'p-val of t-test' = apply(y, 2, function(x) t.test(x)$p.value),
+              'Median' = apply(y, 2, median), 'Max' =apply(y, 2, max), 'Min'= apply(y, 2, min),
+              'Std dev' = apply(y, 2, sd), 'Skew' = colMeans(z^3), 'Kurt' = colMeans(z^4),
+              'JB-test' = apply(y, 2, function(x) jarque.bera.test(x)$statistic),
+              #'p-value' = apply(y, 2, function(x) jarque.bera.test(x)$p.value),
+              'ADF-test' = apply(y, 2, function(x) adf.test(x)$statistic))#,
+              #'p-value' = apply(y, 2, function(x) adf.test(x)$p.value),
+              #'LB-Stat (1)' = apply(y, 2, function(x) Box.test(x, lag = 1)$statistic),
+              #'P-value (1)' = apply(y, 2, function(x) Box.test(x, lag = 1)$p.value),
+              #'LB-Stat (3)' = apply(y, 2, function(x) Box.test(x, lag = 3)$statistic),
+              #'P-value (3)' = apply(y, 2, function(x) Box.test(x, lag = 3)$p.value),
+              #'LB-Stat (5)' = apply(y, 2, function(x) Box.test(x, lag = 5)$statistic),
+              #'P-value (5)' = apply(y, 2, function(x) Box.test(x, lag = 5)$p.value))
+ return(val)
+}
+
+des <- round(descriptives(rw),2)
+rownames(des) <- gsub(pattern = "[.]", "", rownames(des))
+rownames(des) <- gsub(pattern = "1", "", rownames(des))
+colnames(des) <- gsub(pattern = "[.]", "", colnames(des))
+ipak('kableExtra')
+kable(des, "latex", booktabs = T)
+```
+
+
+## **Table-2: Full Sample Table for weekly return (W = 250, h = 10)**
+```{r,echo=FALSE}
+## Table-2: Full Sample Table for weekly return (W = 250, h = 10)
+tab_full_r <- mytable(dny(df = vardat, max_lag = 4, h = 10, window = nrow(vardat)), n_col=ncol(vardat), rname = colnames(vardat))
+rownames(tab_full_r) <- gsub(pattern = "[.]", "", rownames(tab_full_r))
+colnames(tab_full_r) <- gsub(pattern = "[.]", "", colnames(tab_full_r))
+kable(round(tab_full_r, 2), "latex", booktabs = T)
+
+```
+
+## **Table-3: Full Sample Table for weekly return (W = 250, h = 10)**
+```{r,echo=FALSE}
+## Table-3: Full Sample Table for weekly return (W = 250, h = 10)
+tab_full_v <- mytable(dny(df = wv, max_lag = 4, h = 10, window = nrow(vardat)), n_col=ncol(vardat), rname = colnames(vardat))
+rownames(tab_full_v) <- gsub(pattern = "[.]", "", rownames(tab_full_v))
+colnames(tab_full_v) <- gsub(pattern = "[.]", "", colnames(tab_full_v))
+kable(round(tab_full_v, 2), "latex", booktabs = T)
+```
+
+
+## **Figure-4: 250 Weeks fixed window rolling sample for H=10**
+```{r,echo=FALSE, fig.width=8, fig.height=8/1.6}
+par(mfrow = c(1, 1), mai = c(0.5, 0.5, 0.25, 0.25))
+## Figure 4: 250 Weeks fixed window rolling sample for H=10
+TCR <- list()
+for(i in 1:length(tab_rw)){
+  val <- unlist(strsplit(names(tab_rw)[i], "_"))
+  TCR[[i]] <- tab_roll_data(tab_rw[[i]],8,7,window=as.numeric(val[3]))
+}
+TCR <- do.call(cbind, TCR)
+colnames(TCR) <- paste0('TCR_', names(tab_rw))
+TCR <- retainvar(TCR, 'dy_10_250')
+
+TCV <- list()
+for(i in 1:length(tab_wv)){
+  val <- unlist(strsplit(names(tab_wv)[i], "_"))
+  TCV[[i]] <- tab_roll_data(tab_wv[[i]],8,7,window=as.numeric(val[3]))
+}
+TCV <- do.call(cbind, TCV)
+colnames(TCV) <- paste0('TCV_', names(tab_wv))
+TCV <- retainvar(TCV, 'dy_10_250')
+
+TC <- cbind(TCR, TCV)
+nn <- ncol(TC)
+#ipak('xts')
+TC <- xts::xts(TC, order.by=df_date, format = '%Y-%m-%d')
+zoo::plot.zoo(TC, screens = 1, xlab="", ylab = '', col= c('black', 'red'), lwd = 2)
+legend("topleft", inset=c(0,0), y.intersp = 1, 
+       legend = c('Total connectedness (weekly returns)', 'Total connectedness (weekly volatility)'),  
+       lty = 1, lwd = 2, bty = "n", col= c('black', 'red'), cex = 0.8)
+grid()
+
+```
+
+## **Figure-5: 250 Weeks fixed window rolling sample for H=10, Net Transmission**
+```{r,echo=FALSE}
+## Figure 5: 250 Weeks fixed window rolling sample for H=10, Net Transmission
+par(mfrow = c(2, 3), mai = c(0.25, 0.27, 0.25, 0.25))
+for(k in 1:6){
+  TCR <- list()
+  for(i in 1:length(tab_rw)){
+    val <- unlist(strsplit(names(tab_rw)[i], "_"))
+    TCR[[i]] <- tab_roll_data(tab_rw[[i]],15,k,window=as.numeric(val[3]))
+  }
+  TCR <- do.call(cbind, TCR)
+  colnames(TCR) <- paste0('TCR_', names(tab_rw))
+  TCR <- retainvar(TCR, 'dy_10_250')
+  
+  TCV <- list()
+  for(i in 1:length(tab_wv)){
+    val <- unlist(strsplit(names(tab_wv)[i], "_"))
+    TCV[[i]] <- tab_roll_data(tab_wv[[i]],15,k,window=as.numeric(val[3]))
+  }
+  TCV <- do.call(cbind, TCV)
+  colnames(TCV) <- paste0('TCV_', names(tab_wv))
+  TCV <- retainvar(TCV, 'dy_10_250')
+  
+  TC <- cbind(TCR, TCV)
+  nn <- ncol(TC)
+  ipak('xts')
+  TC <- xts::xts(TC, order.by=df_date, format = '%Y-%m-%d')
+  zoo::plot.zoo(TC, screens = 1, xlab="", ylab = '', col= c('black', 'red'), 
+                lwd = 2, main = paste0("A", k, ". ", colnames(vardat)[k], sep = ' '))
+  abline(h = 0, col = 'blue')
+  grid()
+  legend("topleft", inset=c(0,0), y.intersp = 1, 
+         legend = c('Returns', 'Volatility'),  
+         lty = 1, lwd = 2, bty = "n", col= c('black', 'red'), cex = 0.8)
+}
+```
+
+
+## **Figure-6: Robustness check for H and rolling window size for weekly returns**
+```{r,echo=FALSE}
+# Robustness Check
+par(mfrow = c(2, 2), mai = c(0.5, 0.27, 0.25, 0.25))
+for(p in 1:(length(slidingwindow)-1)){
+  ssplot_xts(tab_rw, name = "TC_", df_date = df_date, 
+             w = slidingwindow[p], r = 8, c = 7, legend.names=NULL, 
+             main = paste0('A',p,'. ', slidingwindow[p], ' period window'))
+}
+ssplot_xts(tab_rw, name = "TC_", df_date = df_date, 
+           w = slidingwindow[length(slidingwindow)], r = 8, c = 7, legend.names=NULL, 
+           main = paste0('A', length(slidingwindow),'. ', slidingwindow[length(slidingwindow)], ' period window'))
+legend("topleft", inset=c(0,0), y.intersp = 1, legend = c('H=1', 'H=5', 'H=10', 'H=100'),  lty = 1, bty = "n", col = rainbow(4), cex = 0.8)
+```
+
+
+## **Figure-7: Robustness check for H and rolling window  for weekly volatility**
+```{r, echo=FALSE}
+par(mfrow = c(2, 2), mai = c(0.5, 0.27, 0.25, 0.25))
+for(p in 1:(length(slidingwindow)-1)){
+  ssplot_xts(tab_wv, name = "TC_", df_date = df_date, 
+             w = slidingwindow[p], r = 8, c = 7, legend.names=NULL, 
+             main = paste0('A',p,'. ', slidingwindow[p], ' period window'))
+}
+ssplot_xts(tab_wv, name = "TC_", df_date = df_date, 
+           w = slidingwindow[length(slidingwindow)], r = 8, c = 7, legend.names=NULL, 
+           main = paste0('B', length(slidingwindow),'. ', slidingwindow[length(slidingwindow)], ' period window'))
+legend("topleft", inset=c(0,0), y.intersp = 1, legend = c('H=1', 'H=5', 'H=10', 'H=100'),  lty = 1, bty = "n", col = rainbow(4), cex = 0.8)
+```
+
+
+
+
+
+
 
 ##Determinants of the Spillovers
 ##Robustness

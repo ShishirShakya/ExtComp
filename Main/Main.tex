@@ -318,7 +318,7 @@ then gradually it reverts to its average past values
 and exchange rate market potentially feedbacks false alarms. The
 following graph shows such false alarm.
 
-\includegraphics{Main_files/figure-latex/unnamed-chunk-1-1.pdf}
+\includegraphics{Main_files/figure-latex/unnamed-chunk-2-1.pdf}
 
 \section{Literature reviews}\label{literature-reviews}
 
@@ -340,11 +340,10 @@ external trade balances. Our study is based on the broad EERs.
 
 We retrieve broad nominal (available daily and monthly) and broad real
 (available monthly) effective exchange rate (EER) index data available
-from BIS for France, Germany, Italy, Japan, United Kingdom and United
-States from 1996-04-08 to 2018-02-26. These indices are base to 100 for
-year 2010. We deflate daily nominal EER by respective monthly deflator
--which is ratio of monthly nominal and real effective exchange rate- to
-generate daily real EER (REER).
+from BIS for and from 1996-04-08 to 2018-02-26. These indices are base
+to 100 for year 2010. We deflate daily nominal EER by respective monthly
+deflator -which is ratio of monthly nominal and real effective exchange
+rate- to generate daily real EER (REER).
 
 For the analysis, we developed two sets of data. First, we consider the
 are the growth rates of the weekly REER of each economy (see Figure 1)
@@ -366,13 +365,13 @@ logarithms).
 effective exchange rate from 1996-04-08 to
 2018-02-26.}}{Figure 1: Trend of weekly real effective exchange rate from 1996-04-08 to 2018-02-26.}}\label{figure-1-trend-of-weekly-real-effective-exchange-rate-from-1996-04-08-to-2018-02-26.}
 
-\includegraphics{Main_files/figure-latex/unnamed-chunk-4-1.pdf}
+\includegraphics{Main_files/figure-latex/unnamed-chunk-3-1.pdf}
 
 \subsubsection{\texorpdfstring{\textbf{Figure 2: Volatility of weekly
 real effective exchange rate from 1996-04-08 to
 2018-02-26.}}{Figure 2: Volatility of weekly real effective exchange rate from 1996-04-08 to 2018-02-26.}}\label{figure-2-volatility-of-weekly-real-effective-exchange-rate-from-1996-04-08-to-2018-02-26.}
 
-\includegraphics{Main_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{Main_files/figure-latex/unnamed-chunk-4-1.pdf}
 
 \subsection{\texorpdfstring{\textbf{Diebold and Yilmaz
 methodology}}{Diebold and Yilmaz methodology}}\label{diebold-and-yilmaz-methodology}
@@ -454,6 +453,16 @@ has been first proposed by Koop et al. (1996) and Pesaran and Shin
 Where, \({{\sigma }_{jj}}\) is the standard deviation of the error term
 of the \({{j}^{th}}\) economy and \({{e}_{i}}\) is a selection vector
 with one on the \({{i}^{th}}\) element and zero otherwise.
+
+The connectedness horizon \(H\) is important because it helps to analyze
+the connectedness in ``short-run'' and ``long run''. Consider a pairwise
+connectedness example, shocks to \(j\) many impact the forecast error
+variance of \(i\) only with a lag, such that \({{C}_{i\leftarrow j}}\)
+may be small for small \(H\) but nevertheless larger for larger \(H\).
+Intuitively, as the horizon lengthens there may be more chances for
+connectedness to appear and \(H\) approaches to infinity, it gives an
+unconditional variance decomposition. We use \(H=10\) weeks in our main
+analysis but also provide results with different \(H\) sequences.
 
 \subsubsection{\texorpdfstring{\textbf{Pairwise direction
 connectedness}}{Pairwise direction connectedness}}\label{pairwise-direction-connectedness}
@@ -540,21 +549,112 @@ where the data sample runs from \(t=1,\ldots ,T\) and \(L_{t}^{*}\) is
 the optimum lag selection using some information criterion for
 approximating VAR model for each data sample. We use Akaike Information
 criterion to select the optimum lag for approximating VAR and allow 4
-lags as the maximum lags.
-
-The choice of \(x\) has at least three sub-issues: first is the choice
-of \(x\) or variable itself; second is the transformation of the
-variable e.g.~log transformations, differences, growth rate e.t.c.;
-third is the observational frequency (daily, monthly,\ldots{}). The
-choice of \(x\) may (or may not) be strongly serially correlated,
-conditionally heteroskedastic, or highly disaggregated. The
-connectedness measurements generally will not, and should not, be robust
-to choice of reference universe (F. X. Diebold and Yilmaz 2014).
-
-Intuitively, as the horizon lengthens there may be more chance for
-connectedness to appear.
+lags as the maximum lags. For this purpose, we use 250 weeks rolling
+window to perform the analysis and later facilitate several different
+rolling window periods for analysis.
 
 \section{Results and discussions}\label{results-and-discussions}
+
+\subsection{\texorpdfstring{\textbf{Table-1: Descriptive
+Statistics}}{Table-1: Descriptive Statistics}}\label{table-1-descriptive-statistics}
+
+\begin{verbatim}
+FALSE kableExtra 
+FALSE       TRUE
+\end{verbatim}
+
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+  & Mean & Median & Max & Min & Std dev & Skew & Kurt & JB-test & ADF-test\\
+\midrule
+France & 100.48 & 100.77 & 110.59 & 91.13 & 4.50 & -11.01 & 47.31 & 53.18 & -2.18\\
+Germany & 102.33 & 102.67 & 116.40 & 90.94 & 5.45 & -3.88 & 19.45 & 32.84 & -2.60\\
+Italy & 99.52 & 99.58 & 105.93 & 91.27 & 3.33 & -29.66 & 156.11 & 45.75 & -2.04\\
+Japan & 96.98 & 100.52 & 132.17 & 67.53 & 15.36 & -1.92 & 5.29 & 32.91 & -2.95\\
+UnitedKingdom & 116.23 & 119.47 & 136.76 & 91.80 & 12.41 & 4.31 & 10.21 & 116.20 & -3.13\\
+UnitedStates & 109.58 & 110.23 & 129.45 & 92.38 & 9.29 & 2.68 & 8.55 & 39.79 & -1.83\\
+\bottomrule
+\end{tabular}
+
+\subsection{\texorpdfstring{\textbf{Table-2: Full Sample Table for
+weekly return (W = 250, h =
+10)}}{Table-2: Full Sample Table for weekly return (W = 250, h = 10)}}\label{table-2-full-sample-table-for-weekly-return-w-250-h-10}
+
+\begin{tabular}{lrrrrrrrr}
+\toprule
+  & France & Germany & Italy & Japan & UnitedKingdom & UnitedStates & RowSums & TRSED\\
+\midrule
+France & 97.69 & 1.04 & 0.15 & 0.09 & 0.70 & 0.32 & 100.00 & 2.31\\
+Germany & 82.96 & 16.14 & 0.10 & 0.02 & 0.47 & 0.31 & 100.00 & 83.86\\
+Italy & 73.56 & 2.31 & 22.99 & 0.08 & 0.40 & 0.66 & 100.00 & 77.01\\
+Japan & 0.57 & 0.70 & 0.63 & 97.23 & 0.50 & 0.36 & 100.00 & 2.77\\
+UnitedKingdom & 4.02 & 1.42 & 0.87 & 3.56 & 89.20 & 0.92 & 100.00 & 10.80\\
+\addlinespace
+UnitedStates & 23.33 & 0.37 & 0.18 & 1.24 & 3.83 & 71.04 & 100.00 & 28.96\\
+ColumnSum & 282.13 & 21.99 & 24.93 & 102.24 & 95.09 & 73.62 & NA & NA\\
+TCSED & 184.44 & 5.85 & 1.93 & 5.00 & 5.89 & 2.58 & 34.28 & NA\\
+France1 & 0.00 & -81.91 & -73.41 & -0.48 & -3.32 & -23.01 & NA & NA\\
+Germany1 & 81.91 & 0.00 & -2.22 & -0.68 & -0.95 & -0.06 & NA & NA\\
+\addlinespace
+Italy1 & 73.41 & 2.22 & 0.00 & -0.55 & -0.48 & 0.48 & NA & NA\\
+Japan1 & 0.48 & 0.68 & 0.55 & 0.00 & -3.06 & -0.88 & NA & NA\\
+UnitedKingdom1 & 3.32 & 0.95 & 0.48 & 3.06 & 0.00 & -2.91 & NA & NA\\
+UnitedStates1 & 23.01 & 0.06 & -0.48 & 0.88 & 2.91 & 0.00 & NA & NA\\
+net\_transmitter & 182.13 & -78.01 & -75.07 & 2.24 & -4.91 & -26.38 & NA & NA\\
+\bottomrule
+\end{tabular}
+
+\subsection{\texorpdfstring{\textbf{Table-3: Full Sample Table for
+weekly return (W = 250, h =
+10)}}{Table-3: Full Sample Table for weekly return (W = 250, h = 10)}}\label{table-3-full-sample-table-for-weekly-return-w-250-h-10}
+
+\begin{tabular}{lrrrrrrrr}
+\toprule
+  & France & Germany & Italy & Japan & UnitedKingdom & UnitedStates & RowSums & TRSED\\
+\midrule
+France & 93.92 & 0.33 & 0.32 & 1.31 & 2.19 & 1.94 & 100.00 & 6.08\\
+Germany & 89.75 & 4.87 & 0.51 & 1.43 & 1.85 & 1.59 & 100.00 & 95.13\\
+Italy & 87.22 & 1.05 & 6.63 & 1.22 & 2.04 & 1.84 & 100.00 & 93.37\\
+Japan & 7.96 & 1.64 & 0.43 & 80.36 & 0.57 & 9.04 & 100.00 & 19.64\\
+UnitedKingdom & 21.34 & 0.60 & 0.92 & 4.02 & 67.23 & 5.89 & 100.00 & 32.77\\
+\addlinespace
+UnitedStates & 31.18 & 0.10 & 1.14 & 13.26 & 2.83 & 51.49 & 100.00 & 48.51\\
+ColumnSum & 331.38 & 8.59 & 9.94 & 101.60 & 76.71 & 71.78 & NA & NA\\
+TCSED & 237.46 & 3.72 & 3.31 & 21.24 & 9.48 & 20.30 & 49.25 & NA\\
+France1 & 0.00 & -89.42 & -86.90 & -6.65 & -19.15 & -29.24 & NA & NA\\
+Germany1 & 89.42 & 0.00 & -0.55 & -0.21 & 1.26 & 1.48 & NA & NA\\
+\addlinespace
+Italy1 & 86.90 & 0.55 & 0.00 & 0.79 & 1.12 & 0.70 & NA & NA\\
+Japan1 & 6.65 & 0.21 & -0.79 & 0.00 & -3.45 & -4.22 & NA & NA\\
+UnitedKingdom1 & 19.15 & -1.26 & -1.12 & 3.45 & 0.00 & 3.05 & NA & NA\\
+UnitedStates1 & 29.24 & -1.48 & -0.70 & 4.22 & -3.05 & 0.00 & NA & NA\\
+net\_transmitter & 231.38 & -91.41 & -90.06 & 1.60 & -23.29 & -28.22 & NA & NA\\
+\bottomrule
+\end{tabular}
+
+\subsection{\texorpdfstring{\textbf{Figure-4: 250 Weeks fixed window
+rolling sample for
+H=10}}{Figure-4: 250 Weeks fixed window rolling sample for H=10}}\label{figure-4-250-weeks-fixed-window-rolling-sample-for-h10}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\subsection{\texorpdfstring{\textbf{Figure-5: 250 Weeks fixed window
+rolling sample for H=10, Net
+Transmission}}{Figure-5: 250 Weeks fixed window rolling sample for H=10, Net Transmission}}\label{figure-5-250-weeks-fixed-window-rolling-sample-for-h10-net-transmission}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsection{\texorpdfstring{\textbf{Figure-6: Robustness check for H and
+rolling window size for weekly
+returns}}{Figure-6: Robustness check for H and rolling window size for weekly returns}}\label{figure-6-robustness-check-for-h-and-rolling-window-size-for-weekly-returns}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\subsection{\texorpdfstring{\textbf{Figure-7: Robustness check for H and
+rolling window for weekly
+volatility}}{Figure-7: Robustness check for H and rolling window for weekly volatility}}\label{figure-7-robustness-check-for-h-and-rolling-window-for-weekly-volatility}
+
+\includegraphics{Main_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 \subsection{Determinants of the
 Spillovers}\label{determinants-of-the-spillovers}
